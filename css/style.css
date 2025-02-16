@@ -1,0 +1,95 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+body {
+    font-size: 1vw;
+    height: 100vh;
+    width: 99vw;
+    color: #61278b;
+}
+
+.zIndex-1 {
+    position: absolute;
+    z-index: -1;
+}
+
+.container {
+    padding-top: 100px;
+}
+
+
+.pinkBg {
+    background-color: #ffa8d7;
+}
+
+.purpleBg {
+    background-color: #61278b;
+}
+
+h1 {
+    font-size: 6vw;
+}
+h4 {
+    font-size: 1.8vw;
+}
+h5{
+    font-size: 2vw;
+}
+.h5 {
+    font-size: 2vw;
+    font-weight: 700;
+}
+@media (max-width: 800px) {
+    h1 {
+        font-size: 13vw;
+    }
+    h4 {
+        font-size: 4vw;
+    }
+    h5{
+        font-size: 5vw;
+    }
+    .h5 {
+        font-size: 5vw;
+        font-weight: 700;
+    }
+}
+
+.btn {
+    padding: 20px;
+    background-color: #fff;
+    color: #61278b;
+}
+
+.roundBtn {
+    background-color: pink;
+    padding: 5px;
+    min-width: 40px;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+.imageMain {
+    width: 60%;
+    height: auto;
+}
+
+.whiteStripe {
+    padding: 10px;
+}
+
+.bottomBorder {
+    border-bottom: 1px solid black;
+    padding-top: 5px;
+}
+
+.bigCard {
+    min-height: 20vw;
+    min-width: 20vw;
+}
+.smallCard {
+    min-height: 10vw;
+    min-width: 10vw;
+}
