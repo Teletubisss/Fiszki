@@ -95,14 +95,13 @@ h5{
 }
 
 .bigCard {
-    min-height: 20vw;
     min-width: 20vw;
 }
 .front {
     
 }
 .back {
-    background-color: rgb(223, 183, 213);
+    background-color: #f4d8ff;
 }
 .hidden {
     display: none;
@@ -129,8 +128,3 @@ h5{
     left: 30%;
 }
 
-
-.cardSS {
-    background-color: #fae3f0;
-    color: #61278b; 
-}
