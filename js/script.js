@@ -20,7 +20,7 @@ let smallCard = (valueFront, descrFront, valueBack, descrBack) => {
                             <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
                                     <button onclick="editCard(this.parentElement.parentElement.parentElement)" type="button" class="btn btn-primary d-flex justify-content-between m-2">EDIT</button>
                               <h5 id="titleFrontSmall">${valueFront}</h5>
-                              <p id="decriptionFrontSmall">${descrFront}</p>
+                              <p id="descriptionFrontSmall">${descrFront}</p>
                             </div>
                         </div>
                         <div class="hidden">
@@ -75,9 +75,46 @@ let flipCard = (activeClass, noneClass) => {
 }
 
 let editCard = (element) => {
+    
     document.querySelector('#editPopupContainer').style.display = "flex"
-    document.querySelector('#titleInputPopup').value = document.querySelector('titleFrontSmall').innerText;
-    document.querySelector('#descriptionInputPopup').value = element.querySelector('descriptionFrontSmall').innerText;
-    document.querySelector('#titleInputPopupBack').value = element.querySelector('titleBackSmall').innerText;
-    document.querySelector('#descriptionInputPopupBack').value = element.querySelector('descriptionBackSmall').innerText;
+    document.querySelector('#titleInputPopup').value = document.querySelector('#titleFrontSmall').innerText;
+    document.querySelector('#descriptionInputPopup').value = element.querySelector('#descriptionFrontSmall').innerText;
+    document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
+    document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
+}
+
+
+
+let saveToStorage = () => {
+
+    const tasks = Array.from(document.querySelectorAll('#taskList li')).map(task => ({
+        text: task.querySelector("span").innerText,
+        done: task.querySelector("span").classList.contains("done")
+    }));;
+    console.log(tasks)
+
+    
+    localStorage.setItem("stardrewData", JSON.stringify(tasks));
+}
+let saveEdit = () => {
+    if (currentTask) {
+        currentTask.innerText = document.getElementById("editInput").value;
+    }
+    saveToStorage();
+    closePopup();
+}
+
+let closePopup = () => {
+    document.querySelector("#editPopupContainer").style.display = "none";
+}
+
+let keyDownSave = (e) => {
+    if (e.keyCode === 13) {
+        e.preventDefault();
+        saveEdit();
+    }
+    else if (e.keyCode === 27) {
+        e.preventDefault();
+        closePopup();
+    }
 }

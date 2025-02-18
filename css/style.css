@@ -123,6 +123,9 @@ h5{
     .purpleBg {
         background-color: #61278b;
     }
+    h6 {
+        font-size: 3vw;
+    }
 }
 
 .btn {
@@ -170,7 +173,7 @@ h5{
 
 .popupContainer {
     display: none;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
