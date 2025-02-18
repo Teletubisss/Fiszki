@@ -7,9 +7,27 @@ body {
     font-size: 1vw;
     width: 99vw;
     color: #61278b;
-    background-image: url('../images/bg.png');
+    background-fimage: url('../images/bg.png');
     font-family: Garbata;
 
+}
+#backgroundPink {
+    position: fixed;
+    z-index: -5;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #ffa8d7; 
+}
+#backgroundPurple {
+    position: fixed;
+    z-index: -5;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: #61278b; 
 }
 @font-face {
     font-family: Garbata;
@@ -27,14 +45,6 @@ body {
 }
 
 
-.pinkBg {
-    background-color: #ffa8d7;
-    
-}
-
-.purpleBg {
-    background-color: #61278b;
-}
 .GoBack {
     position: fixed;
     z-index: 2;
@@ -101,6 +111,18 @@ h5{
     }
     .roundBtn {
         font-size: 6vw;
+    }
+    body {
+        background-color: #ffa8d7;
+    }
+    #backgroundPink {
+        background-color: transparent
+    }
+    #backgroundPurple {
+        background-color: transparent;
+    }
+    .purpleBg {
+        background-color: #61278b;
     }
 }
 
@@ -172,13 +194,20 @@ h5{
     background-color: #a8ffd0;
     color: #00bf63;
     width: 150px;
-
+}
+.correctButton:hover {
+    background-color: #00bf63;
+    color: white;
 }
 .wrongButton {
     background-color: #f86565;
     color: #ff3131;
     height: 70px;
     width: 150px;
+}
+.wrongButton:hover {
+    background-color: #ff3131;
+    color: white;
 }
 #bigCardLesson {
 

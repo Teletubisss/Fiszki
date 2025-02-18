@@ -18,7 +18,7 @@ let smallCard = (valueFront, descrFront, valueBack, descrBack) => {
                     <div class="card  p-4 mb-3">
                         <div>
                             <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
-                                    <button onclick="editCard(this.parentElement.parentElement.parentElement)" type="button" class="btn btn-secondary d-flex justify-content-between m-2">EDIT</button>
+                                    <button onclick="editCard(this.parentElement.parentElement.parentElement)" type="button" class="btn btn-primary d-flex justify-content-between m-2">EDIT</button>
                               <h5 id="titleFrontSmall">${valueFront}</h5>
                               <p id="decriptionFrontSmall">${descrFront}</p>
                             </div>
