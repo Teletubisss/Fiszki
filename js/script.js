@@ -76,7 +76,7 @@ let flipCard = (activeClass, noneClass) => {
 
 let editCard = (element) => {
     document.querySelector('#editPopupContainer').style.display = "flex"
-    document.querySelector('#titleInputPopup').value = element.querySelector('titleFrontSmall').innerText;
+    document.querySelector('#titleInputPopup').value = document.querySelector('titleFrontSmall').innerText;
     document.querySelector('#descriptionInputPopup').value = element.querySelector('descriptionFrontSmall').innerText;
     document.querySelector('#titleInputPopupBack').value = element.querySelector('titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('descriptionBackSmall').innerText;

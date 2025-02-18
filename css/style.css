@@ -13,11 +13,7 @@ body {
 }
 @font-face {
     font-family: Garbata;
-    src: url(../fonts/GarbataTrial-Bold.ttf);
-}
-@font-face {
-    font-family: GarbataBold;
-    src: url(../fonts/GarbataTrial-Extrabold.ttf);
+    src: url(../fonts/Garbata\ Serif\ Font.ttf);
 }
 
 
@@ -51,7 +47,11 @@ body {
 
 h1 {
     font-size: 6vw;
-    font-family: garbataBold;
+    font-weight: 800;
+}
+h2 {
+    font-size: 5vw;
+    font-weight: 700;
 }
 h3 {
     font-size: 3vw;
@@ -83,6 +83,9 @@ h5{
     h3 {
         font-size: 10vw;
     }
+    h2 {
+        font-size: 12vw;
+    }
     body {
         font-size: 2.5vw;
     }
@@ -96,6 +99,9 @@ h5{
     .startLesson {
         top: 18%;
     }
+    .roundBtn {
+        font-size: 6vw;
+    }
 }
 
 .btn {
@@ -107,9 +113,8 @@ h5{
 .roundBtn {
     background-color: pink;
     padding: 5px;
-    min-width: 40px;
+    width: 40px;
     border-radius: 25px;
-    font-weight: 700;
 }
 
 .imageMain {
@@ -217,3 +222,21 @@ h5{
     color: #61278b;
     transform: rotateY(180deg);
   }
+
+
+
+
+
+
+  .completeTable {
+    background-color: #fff;
+  }
+.imageComplete {
+    height: 80%;
+}
+
+.GoBackComplete {
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
