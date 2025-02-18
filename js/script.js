@@ -15,7 +15,7 @@ let keyDownTitle = (e) => {
 
 let smallCard = (valueFront, descrFront, valueBack, descrBack) => {
     return `<div class="col-lg-3 col-md-4 col-6">
-                    <div class="card  p-4 mb-3">
+                    <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                         <div>
                             <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
                                     <button onclick="editCard(this.parentElement.parentElement.parentElement)" type="button" class="btn btn-primary d-flex justify-content-between m-2">EDIT</button>
