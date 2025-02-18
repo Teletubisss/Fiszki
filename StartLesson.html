@@ -17,7 +17,7 @@
         <h1 class="mx-auto">Learning Time!</h1>
     </div>
 
-    <div class="container d-flex justify-content-center flex-fill h-100 w-100">
+    <div class="container d-flex justify-content-around flex-fill h-100 w-100">
         <div class="card flip-card">
             <div class="flip-card-inner">
               <div class="flip-card-front d-flex flex-column justify-content-center">
@@ -32,8 +32,13 @@
           </div>
     </div>
     <div class="d-flex container w-100 justify-content-center">
-        <button onclick="flipCard('#back', '#front')" type="button" class="btn d-flex justify-content-center align-items-center correctButton m-2">CORRECT</button>
-        <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn wrongButton d-flex justify-content-center align-items-center m-2">WRONG</button>
+        <button onclick="flipCard('#back', '#front')" type="button" class="btn d-flex justify-content-center align-items-center correctButton mx-2">CORRECT</button>
+        <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn wrongButton d-flex justify-content-center align-items-center mx-2">WRONG</button>
+    </div>
+    <div class="container d-flex flex-column align-items-center whiteStripe my-4 p-3 w-25">
+      <h6>CORRECT ANSWERS: </h6>
+      <h6>WRONG ANSWERS: </h6>
+      <h6>CARD: x/x</h6>
     </div>
     <script src="js/bootstrap.js"></script>
     <script src="js/scriptLesson.js"></script>
