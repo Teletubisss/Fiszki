@@ -1,4 +1,5 @@
 let cardRow = document.querySelector('#cardRow');
+currentTask = undefined;
 
 window.onload = function() {
 
@@ -15,22 +16,22 @@ let keyDownTitle = (e) => {
 
 let smallCard = (valueFront, descrFront, valueBack, descrBack) => {
     return `<div class="col-lg-3 col-md-4 col-6">
-                    <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
-                        <div>
-                            <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
-                                    <button onclick="editCard(this.parentElement.parentElement.parentElement)" type="button" class="btn btn-primary d-flex justify-content-between m-2">EDIT</button>
-                              <h5 id="titleFrontSmall">${valueFront}</h5>
-                              <p id="descriptionFrontSmall">${descrFront}</p>
-                            </div>
-                        </div>
-                        <div class="hidden">
-                            <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
-                              <h5 id="titleBackSmall">${valueBack}</h5>
-                              <p id="descriptionBackSmall">${descrBack}</p>
-                            </div>
+                <div class="card d-flex justify-content-center align-items-center smallCard p-4 mb-3">
+                    <div>
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
+                                <button onclick="editCard(this.parentElement.parentElement.parentElement.parentElement)" type="button" class="btn btn-primary d-flex justify-content-between m-2">EDIT</button>
+                            <h5 id="titleFrontSmall">${valueFront}</h5>
+                            <p id="descriptionFrontSmall">${descrFront}</p>
                         </div>
                     </div>
-                </div>`;
+                    <div class="hidden">
+                        <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
+                            <h5 id="titleBackSmall">${valueBack}</h5>
+                            <p id="descriptionBackSmall">${descrBack}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
 }
 
 
@@ -58,6 +59,7 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
     let bigCardDescFront = document.querySelector(decriptionSelectorIdFront);
     let bigCardTextBack = document.querySelector(titleSelectorIdBack);
     let bigCardDescBack = document.querySelector(descriptionSelectorIdBack);
+    closePopup();
 
     addCard(bigCardTextFront.value, bigCardDescFront.value, bigCardTextBack.value, bigCardDescBack.value);
     bigCardDescFront.value = '';
@@ -65,6 +67,7 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
     bigCardDescBack.value = '';
     bigCardTextBack.value = '';
     bigCardText.focus();
+    saveToStorage();
 }
 
 let flipCard = (activeClass, noneClass) => {
@@ -81,40 +84,24 @@ let editCard = (element) => {
     document.querySelector('#descriptionInputPopup').value = element.querySelector('#descriptionFrontSmall').innerText;
     document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
+    element.remove();
 }
 
 
 
 let saveToStorage = () => {
 
-    const tasks = Array.from(document.querySelectorAll('#taskList li')).map(task => ({
-        text: task.querySelector("span").innerText,
-        done: task.querySelector("span").classList.contains("done")
+    const cards = Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
+        titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
+        descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
+        titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
+        descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText
     }));;
-    console.log(tasks)
 
-    
-    localStorage.setItem("stardrewData", JSON.stringify(tasks));
+    localStorage.setItem("Project1", JSON.stringify(cards));
 }
-let saveEdit = () => {
-    if (currentTask) {
-        currentTask.innerText = document.getElementById("editInput").value;
-    }
-    saveToStorage();
-    closePopup();
-}
+
 
 let closePopup = () => {
     document.querySelector("#editPopupContainer").style.display = "none";
-}
-
-let keyDownSave = (e) => {
-    if (e.keyCode === 13) {
-        e.preventDefault();
-        saveEdit();
-    }
-    else if (e.keyCode === 27) {
-        e.preventDefault();
-        closePopup();
-    }
 }
