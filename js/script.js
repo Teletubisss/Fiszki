@@ -18,15 +18,15 @@ let smallCard = (valueFront, descrFront, valueBack, descrBack) => {
                     <div class="card  p-4 mb-3">
                         <div>
                             <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
-                                    <button onclick="saveCard('#titleInput', '#descriptionInput')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">EDIT</button>
-                              <h5>${valueFront}</h5>
-                              <p>${descrFront}</p>
+                                    <button onclick="editCard(this.parentElement.parentElement.parentElement)" type="button" class="btn btn-secondary d-flex justify-content-between m-2">EDIT</button>
+                              <h5 id="titleFrontSmall">${valueFront}</h5>
+                              <p id="decriptionFrontSmall">${descrFront}</p>
                             </div>
                         </div>
                         <div class="hidden">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
-                              <h5>${valueBack}</h5>
-                              <p>${descrBack}</p>
+                              <h5 id="titleBackSmall">${valueBack}</h5>
+                              <p id="descriptionBackSmall">${descrBack}</p>
                             </div>
                         </div>
                     </div>
@@ -74,6 +74,10 @@ let flipCard = (activeClass, noneClass) => {
     none.classList.remove('hidden');
 }
 
-let Popup = () => {
-
-} 
+let editCard = (element) => {
+    document.querySelector('#editPopupContainer').style.display = "flex"
+    document.querySelector('#titleInputPopup').value = element.querySelector('titleFrontSmall').innerText;
+    document.querySelector('#descriptionInputPopup').value = element.querySelector('descriptionFrontSmall').innerText;
+    document.querySelector('#titleInputPopupBack').value = element.querySelector('titleBackSmall').innerText;
+    document.querySelector('#descriptionInputPopupBack').value = element.querySelector('descriptionBackSmall').innerText;
+}

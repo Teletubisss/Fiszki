@@ -7,7 +7,19 @@ body {
     font-size: 1vw;
     width: 99vw;
     color: #61278b;
+    background-image: url('/images/bg.png');
+    font-family: Garbata;
+
 }
+@font-face {
+    font-family: Garbata;
+    src: url(../fonts/GarbataTrial-Bold.ttf);
+}
+@font-face {
+    font-family: GarbataBold;
+    src: url(../fonts/GarbataTrial-Extrabold.ttf);
+}
+
 
 .zIndex-1 {
     position: absolute;
@@ -29,10 +41,20 @@ body {
 }
 .GoBack {
     position: fixed;
+    z-index: 2;
+}
+.startLesson {
+    position: fixed;
+    top: 7%;
+    z-index: 2;
 }
 
 h1 {
     font-size: 6vw;
+    font-family: garbataBold;
+}
+h3 {
+    font-size: 3vw;
 }
 h4 {
     font-size: 1.8vw;
@@ -58,12 +80,21 @@ h5{
         font-size: 5vw;
         font-weight: 700;
     }
+    h3 {
+        font-size: 10vw;
+    }
     body {
         font-size: 2.5vw;
     }
     .btn {
         font-size: 3vw;
         padding: 4px;
+    }
+    .GoBack {
+        top: 11%;
+    }
+    .startLesson {
+        top: 18%;
     }
 }
 
@@ -87,7 +118,8 @@ h5{
 }
 
 .whiteStripe {
-    padding: 10px;
+    padding: 5px;
+    background-color: #fff;
 }
 
 .NewProInput {
@@ -102,6 +134,7 @@ h5{
 }
 .back {
     background-color: #f4d8ff;
+    color: #61278b;
 }
 .hidden {
     display: none;
@@ -128,3 +161,59 @@ h5{
     left: 30%;
 }
 
+
+
+.correctButton {
+    background-color: #a8ffd0;
+    color: #00bf63;
+    width: 150px;
+
+}
+.wrongButton {
+    background-color: #f86565;
+    color: #ff3131;
+    height: 70px;
+    width: 150px;
+}
+#bigCardLesson {
+
+}
+
+
+.flip-card {
+    background-color: transparent;
+    width: 400px;
+    height: 300px;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+
+  .flip-card-front {
+    background-color: #fffafa;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: #f4d8ff;
+    color: #61278b;
+    transform: rotateY(180deg);
+  }
