@@ -30,7 +30,7 @@
                 <div class="front" id="front">
                     <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
                         <div class="d-flex">
-                            <button onclick="flipCard('#front', '#back')" type="button" class="btn btn-primary d-flex justify-content-between m-2">FLIP</button>
+                            <button onclick="flipCard('#front', '#back'), flipCardFuncion()" type="button" class="flip-trigger btn btn-primary d-flex justify-content-between m-2">FLIP</button>
                             <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                         </div>
                       <input onkeydown="titleKeyDown(event, '#descriptionInputFront')" type="text" id="titleInputFront" placeholder="Add a Title" class="m-4 p-3" value=""/>

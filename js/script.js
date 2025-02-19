@@ -66,7 +66,7 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
     bigCardTextFront.value = '';
     bigCardDescBack.value = '';
     bigCardTextBack.value = '';
-    bigCardText.focus();
+    bigCardTextFront.focus();
     saveToStorage();
 }
 
@@ -85,6 +85,7 @@ let editCard = (element) => {
     document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
     element.remove();
+    saveToStorage();
 }
 
 
@@ -97,7 +98,6 @@ let saveToStorage = () => {
         titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
         descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText
     }));;
-
     localStorage.setItem("Project1", JSON.stringify(cards));
 }
 
@@ -105,3 +105,32 @@ let saveToStorage = () => {
 let closePopup = () => {
     document.querySelector("#editPopupContainer").style.display = "none";
 }
+
+
+
+
+document.querySelectorAll('.flip-card').forEach(card => {
+    const button = card.querySelector('.flip-trigger');
+    const innerCard = card.querySelector('.flip-card-inner');
+
+    if (button) {
+        button.addEventListener('click', () => {
+            if (innerCard.style.transform === 'rotateY(180deg)') {
+                innerCard.style.transform = 'rotateY(0deg)'; // Cofnięcie obrotu
+            } else {
+                innerCard.style.transform = 'rotateY(180deg)'; // Obrót
+            }
+        });
+    }
+});
+
+// function flipCardFuncion() {
+//     const card = button.closest('.flip-card'); // Znajdujemy najbliższy element .flip-card
+//     const innerCard = card.querySelector('.flip-card-inner'); 
+
+//     if (innerCard.style.transform === 'rotateY(180deg)') {
+//         innerCard.style.transform = 'rotateY(0deg)'; // Cofnięcie obrotu
+//     } else {
+//         innerCard.style.transform = 'rotateY(180deg)'; // Obrót
+//     }
+// }
