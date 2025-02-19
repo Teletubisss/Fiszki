@@ -101,6 +101,17 @@ debugger;
     localStorage.setItem("Project1", JSON.stringify(cards));
 }
 
+let loadFromStorage = () => {
+
+    const cards = JSON.parse(localStorage.getItem("Project1")) || [];
+
+    const cardsList = document.querySelector("#smallCards");
+
+    cards.forEach(task => {
+        addCard()
+}
+
+
 
 let closePopup = () => {
     document.querySelector("#editPopupContainer").style.display = "none";
