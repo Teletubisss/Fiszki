@@ -91,13 +91,13 @@ let editCard = (element) => {
 
 
 let saveToStorage = () => {
-
+debugger;
     const cards = Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
         titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
         descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
         titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
         descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText
-    }));;
+    }));
     localStorage.setItem("Project1", JSON.stringify(cards));
 }
 
@@ -110,8 +110,5 @@ let flipCard3D = (flipCard) => {
     const card = document.getElementById(flipCard);
     card.classList.toggle('active');
 }
-let flipCard3DPopup = () => {
-    const card = document.getElementById("P");
-    card.classList.toggle('active');
-}
+
 

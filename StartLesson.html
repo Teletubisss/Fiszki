@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favIco.png">
 </head>
 <body>
   <div id="backgroundPink"></div>
@@ -16,21 +17,24 @@
     <div class="whiteStripe d-flex">
         <h1 class="mx-auto">Learning Time!</h1>
     </div>
-
-    <div class="container d-flex justify-content-around flex-fill h-100 w-100">
-        <div class="card flip-card">
-            <div class="flip-card-inner">
-              <div class="flip-card-front d-flex flex-column justify-content-center">
-                <h3 id="titleFrontLesson">Title</h3>
-                <h4 id="descriptionFrontLesson">Description</h4>
-              </div>
-              <div class="flip-card-back d-flex flex-column justify-content-center">
-                <h3 id="titleBackLesson">Title</h3>
-                <h4 id="'descriptionBackLesson">Description</h4>
-              </div>
+    <div class="container d-flex justify-content-center flex-fill w-100 my-3">
+      <div class="card cardLesson" id="cardLesson" style="width: 18rem;">
+        <div class="front" id="frontLesson">
+            <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
+              <button onclick="flipCard3D('cardLesson')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
+              <h5 class="p-3">Tekst</h5>
+              <p id="">Description</p>
             </div>
+        </div>
+        <div class="back" id="backLesson">
+          <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
+            <button onclick="flipCard3D('cardLesson')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
+            <h5 class="p-3">Tekst</h5>
+            <p id="">Description</p>
           </div>
-    </div>
+        </div>
+      </div>
+  </div>
     <div class="d-flex container w-100 justify-content-center">
         <button onclick="flipCard('#back', '#front')" type="button" class="btn d-flex justify-content-center align-items-center correctButton mx-2">CORRECT</button>
         <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn wrongButton d-flex justify-content-center align-items-center mx-2">WRONG</button>
@@ -41,6 +45,6 @@
       <h6>CARD: x/x</h6>
     </div>
     <script src="js/bootstrap.js"></script>
-    <script src="js/scriptLesson.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@
     </div>
     <div class="row d-flex w-100 m-0">
         <div class="container d-flex justify-content-center m-0 flex-fill h-100 my-3">
-            <div class="card bigCard flip-card" id="bigCard" style="width: 18rem;">
+            <div class="card bigCard" id="bigCard" style="width: 18rem;">
                     <div class="front" id="front">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
                             <div class="d-flex">
@@ -59,17 +59,17 @@
             <div class="front" id="frontPopup">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
                     <div class="d-flex">
-                        <button onclick="flipCard('#frontPopup', '#backPopup')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
+                        <button onclick="flipCard3D('Popup')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
                         <button onclick="saveCard('#titleInputPopup', '#descriptionInputPopup', '#titleInputPopupBack', '#descriptionInputPopupBack')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                     </div>
                   <input onkeydown="titleKeyDown(event, '#descriptionInputPopup')" type="text" id="titleInputPopup" placeholder="Add a Title" class="m-4 p-3" value=""/>
                   <input onkeydown="descriptionKeyDown(event, '#titleInputPopup', '#descriptionInputPopup')" type="text" id="descriptionInputPopup" placeholder="Add a Description" class="m-4 p-1" />
                 </div>
             </div>
-            <div class="back hidden" id="backPopup">
+            <div class="back" id="backPopup">
                 <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
                     <div class="d-flex">
-                        <button onclick="flipCard('#backPopup', '#frontPopup')" type="button" class="btn btn-primary d-flex justify-content-between m-2">FLIP</button>
+                        <button onclick="flipCard3D('Popup')" type="button" class="btn btn-primary d-flex justify-content-between m-2">FLIP</button>
                         <button onclick="saveCard('#titleInputPopup', '#descriptionInputPopup', '#titleInputPopupBack', '#descriptionInputPopupBack')", type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                     </div>
                   <input onkeydown="titleKeyDown(event, '#descriptionInputPopupBack')" type="text" id="titleInputPopupBack" placeholder="Add a Title" class="m-4 p-3" value=""/>
