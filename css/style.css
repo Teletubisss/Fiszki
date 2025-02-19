@@ -126,6 +126,9 @@ h5{
     h6 {
         font-size: 3vw;
     }
+    .bigCard {
+        height: 70vw;
+    }
 }
 
 .btn {
@@ -156,15 +159,36 @@ h5{
 }
 
 .bigCard {
+    position: relative;
     min-width: 20vw;
-    min-height: 20vw;
+    height: 400px;
+    transition: transform 0.8s;
+    cursor: pointer;
+    transform-style: preserve-3d;
+}
+.bigCard.active {
+    transform: perspective(300px) rotateY(180deg);
 }
 .front {
-    
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    backface-visibility: hidden;
 }
 .back {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
     background-color: #f4d8ff;
     color: #61278b;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 .hidden {
     display: none;
@@ -215,50 +239,6 @@ h5{
 #bigCardLesson {
 
 }
-
-
-.flip-card {
-    border: 1px solid #f1f1f1;
-    perspective: 1000px;
-    cursor: pointer;
-    background: transparent;
-  }
-  
-  /* Animacja obrotu */
-  .flip-card-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    transition: transform 0.8s ease-in-out; /* Płynna animacja */
-    transform-style: preserve-3d;
-  }
-  
-  /* Klasa, która się dodaje po kliknięciu */
-  .flipped {
-    transform: rotateY(180deg);
-  }
-  
-  /* Przód i tył karty */
-  .flip-card-front, .flip-card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: visible;
-  }
-  
-  /* Stylowanie frontu */
-  .flip-card-front {
-    background-color: #bbb;
-    color: black;
-  }
-  
-  /* Stylowanie tyłu */
-  .flip-card-back {
-    background-color: dodgerblue;
-    color: white;
-  }
-
 
 
 

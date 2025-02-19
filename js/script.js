@@ -70,7 +70,7 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
     saveToStorage();
 }
 
-let flipCard = (activeClass, noneClass) => {
+let fliptCard = (activeClass, noneClass) => {
     let active = document.querySelector(activeClass);
     let none = document.querySelector(noneClass);
     active.classList.add('hidden');
@@ -106,31 +106,12 @@ let closePopup = () => {
     document.querySelector("#editPopupContainer").style.display = "none";
 }
 
-
-
-
-document.querySelectorAll('.flip-card').forEach(card => {
-    const button = card.querySelector('.flip-trigger');
-    const innerCard = card.querySelector('.flip-card-inner');
-
-    if (button) {
-        button.addEventListener('click', () => {
-            if (innerCard.style.transform === 'rotateY(180deg)') {
-                innerCard.style.transform = 'rotateY(0deg)'; // Cofnięcie obrotu
-            } else {
-                innerCard.style.transform = 'rotateY(180deg)'; // Obrót
-            }
-        });
-    }
-});
-
-
-
-
-document.querySelectorAll('.flip-card').forEach(card => {
-    card.addEventListener('click', () => {
-        const innerCard = card.querySelector('.flip-card-inner');
-        innerCard.classList.toggle('flipped'); // Dodajemy/Usuwamy klasę
-    });
-});
+let flipCard3D = (flipCard) => {
+    const card = document.getElementById(flipCard);
+    card.classList.toggle('active');
+}
+let flipCard3DPopup = () => {
+    const card = document.getElementById("P");
+    card.classList.toggle('active');
+}
 
