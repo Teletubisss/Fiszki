@@ -2,7 +2,7 @@ let cardRow = document.querySelector('#cardRow');
 currentTask = undefined;
 
 window.onload = function() {
-
+    loadFromStorage();
 }
 
 let keyDownTitle = (e) => {
@@ -91,7 +91,6 @@ let editCard = (element) => {
 
 
 let saveToStorage = () => {
-debugger;
     const cards = Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
         titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
         descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
@@ -105,10 +104,9 @@ let loadFromStorage = () => {
 
     const cards = JSON.parse(localStorage.getItem("Project1")) || [];
 
-    const cardsList = document.querySelector("#smallCards");
-
-    cards.forEach(task => {
-        addCard()
+    cards.forEach(card => {
+        addCard(card.titleFront, card.descriptionFront || "", card.titleBack, card.descriptionBack || "");
+    });
 }
 
 
