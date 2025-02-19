@@ -124,13 +124,13 @@ document.querySelectorAll('.flip-card').forEach(card => {
     }
 });
 
-// function flipCardFuncion() {
-//     const card = button.closest('.flip-card'); // Znajdujemy najbliższy element .flip-card
-//     const innerCard = card.querySelector('.flip-card-inner'); 
 
-//     if (innerCard.style.transform === 'rotateY(180deg)') {
-//         innerCard.style.transform = 'rotateY(0deg)'; // Cofnięcie obrotu
-//     } else {
-//         innerCard.style.transform = 'rotateY(180deg)'; // Obrót
-//     }
-// }
+
+
+document.querySelectorAll('.flip-card').forEach(card => {
+    card.addEventListener('click', () => {
+        const innerCard = card.querySelector('.flip-card-inner');
+        innerCard.classList.toggle('flipped'); // Dodajemy/Usuwamy klasę
+    });
+});
+

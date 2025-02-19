@@ -157,6 +157,7 @@ h5{
 
 .bigCard {
     min-width: 20vw;
+    min-height: 20vw;
 }
 .front {
     
@@ -217,44 +218,46 @@ h5{
 
 
 .flip-card {
-    background-color: transparent;
-    width: 400px;
-    height: 300px;
+    border: 1px solid #f1f1f1;
     perspective: 1000px;
+    cursor: pointer;
+    background: transparent;
   }
   
+  /* Animacja obrotu */
   .flip-card-inner {
     position: relative;
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 0.8s ease-in-out; /* Płynna animacja */
     transform-style: preserve-3d;
   }
   
-  .flip-card:hover .flip-card-inner {
+  /* Klasa, która się dodaje po kliknięciu */
+  .flipped {
     transform: rotateY(180deg);
   }
+  
+  /* Przód i tył karty */
   .flip-card-front, .flip-card-back {
     position: absolute;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
+    backface-visibility: visible;
   }
-
+  
+  /* Stylowanie frontu */
   .flip-card-front {
-    background-color: #fffafa;
+    background-color: #bbb;
     color: black;
   }
   
-  /* Style the back side */
+  /* Stylowanie tyłu */
   .flip-card-back {
-    background-color: #f4d8ff;
-    color: #61278b;
-    transform: rotateY(180deg);
+    background-color: dodgerblue;
+    color: white;
   }
-
-
 
 
 
