@@ -106,6 +106,15 @@ let loadLatestFromStorage = () => {
     loadFromStorage(latestName);
 }
 
+let loadCurrentFromStorage = () => {
+    const latestName = JSON.parse(localStorage.getItem('currentProjectName'));
+    if (latestName === undefined) {
+        return;
+    }
+    
+    loadFromStorage(latestName);
+}
+
 
 let loadFromStorage = (projectName) => {
     const project = JSON.parse(localStorage.getItem(projectName)) || [];
@@ -161,7 +170,7 @@ let createEmptyArrays = () => {
 
 let yourProject = (number, projectName) => {
     return `
-            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="loadLesson('${projectName}')" >
+            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="setCurrent('${projectName}')" >
                 <div class="roundBtn h5">${number}</div>
                 <span class="h5" id = '${projectName}'>${projectName}</span>
             </button>`;
@@ -179,6 +188,11 @@ let createYourProjects = () => {
                 row.innerHTML += buttonHTML; 
                 tableCount++;
         }
-});
+    });
+}
+
+let setCurrent = (projectName) => {
+    localStorage.setItem('currentProjectName', JSON.stringify(projectName));
+    window.location.href = "LastProject.html"
 
 }

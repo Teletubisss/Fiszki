@@ -1,3 +1,4 @@
 window.onload = function() {
-    loadLatestFromStorage()
+    debugger;
+    loadCurrentFromStorage()
 }
