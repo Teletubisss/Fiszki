@@ -108,8 +108,8 @@ let loadLatestFromStorage = () => {
 
 
 let loadFromStorage = (projectName) => {
-    const cards = JSON.parse(localStorage.getItem(projectName)) || [];
-
+    const project = JSON.parse(localStorage.getItem(projectName)) || [];
+    const cards = project.flips;
     cards.forEach(card => {
         addCard(card.titleFront, card.descriptionFront || "", card.titleBack, card.descriptionBack || "");
     });
@@ -120,9 +120,16 @@ let saveProject = () => {
     let lastTitle = document.getElementById('NewProTitle').value;
     saveLastProjectName(lastTitle);
     const cards = getCards();
-    localStorage.setItem(lastTitle, JSON.stringify(cards));
-    console.log('selectedProject');
+    const project = {
+        projectName: lastTitle,
+        projectDecription: 'tutaj desc',
+        flips: cards
+    }
+    localStorage.setItem(lastTitle, JSON.stringify(project));
 };
+
+
+
 
 let getCards = () => {
     return Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
@@ -144,16 +151,6 @@ let flipCard3D = (flipCard) => {
 
 
 
-
-let loadSelectedProject = () => {
-    let projectName = localStorage.getItem("selectedProject");
-    // Odczytujemy dane projektu z localStorage, np. w formie tablicy
-    let projectData = JSON.parse(localStorage.getItem(projectName)) || [];
-}
-
-
-
-
 let createEmptyArrays = () => {
     localStorage.setItem("correctAnswers", [])
     localStorage.setItem("wrongAnswers", [])
@@ -162,15 +159,11 @@ let createEmptyArrays = () => {
 
 
 
-
-
-
-
 let yourProject = (number, projectName) => {
     return `
-            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="('Popup')">
+            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="window.location.href='NewProject.html';" >
                 <div class="roundBtn h5">${number}</div>
-                <span class="h5">${projectName}</span>
+                <span class="h5" id = '${projectName}'>${projectName}</span>
             </button>`;
 }
 
@@ -178,16 +171,27 @@ let createYourProjects = () => {
     let row = document.getElementById('YourProjects');
     let keys = Object.keys(localStorage);
     let tableCount = 1;
-
     keys.forEach(key => {
-        let data = JSON.parse(localStorage.getItem(key));
-
-        if (Array.isArray(data)) {
-            let buttonHTML = yourProject(tableCount, key);
-            row.innerHTML += buttonHTML; 
-            tableCount++;
-    }
+        if (key !== 'stardrewData' & key !== 'lastProjectTitle') {
+            console.log(key)
+            let data = JSON.parse(localStorage.getItem(key));
+                let buttonHTML = yourProject(tableCount, key);
+                row.innerHTML += buttonHTML; 
+                tableCount++;
+        }
 });
 
 }
+
+let loadProject = (element) => {
+
+    const projectName = element.querySelector('span').textContent;
+    if (projectName === undefined) {
+        return;
+    }
+    
+    
+    loadFromStorage(projectName);
+}
+
 
