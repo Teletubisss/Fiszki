@@ -78,7 +78,7 @@ let fliptCard = (activeClass, noneClass) => {
 let editCard = (element) => {
     
     document.querySelector('#editPopupContainer').style.display = "flex"
-    document.querySelector('#titleInputPopup').value = document.querySelector('#titleFrontSmall').innerText;
+    document.querySelector('#titleInputPopup').value = element.querySelector('#titleFrontSmall').innerText;
     document.querySelector('#descriptionInputPopup').value = element.querySelector('#descriptionFrontSmall').innerText;
     document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
@@ -159,21 +159,35 @@ let createEmptyArrays = () => {
     localStorage.setItem("wrongAnswers", [])
 }
 
-let getRandomFlashcard = () => {
-    let projectName = localStorage.getItem("selectedProject"); // Pobierz wybrany projekt
-    let projectData = JSON.parse(localStorage.getItem(projectName)) || []; // Pobierz dane projektu
 
-    if (projectData.length === 0) {
-        alert("Brak fiszek w tej kategorii!");
-        return null; // Jeśli tablica jest pusta, kończymy funkcję
+
+
+
+
+
+
+let yourProject = (number, projectName) => {
+    return `
+            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="('Popup')">
+                <div class="roundBtn h5">${number}</div>
+                <span class="h5">${projectName}</span>
+            </button>`;
+}
+
+let createYourProjects = () => {
+    let row = document.getElementById('YourProjects');
+    let keys = Object.keys(localStorage);
+    let tableCount = 1;
+
+    keys.forEach(key => {
+        let data = JSON.parse(localStorage.getItem(key));
+
+        if (Array.isArray(data)) {
+            let buttonHTML = yourProject(tableCount, key);
+            row.innerHTML += buttonHTML; 
+            tableCount++;
     }
+});
 
-    let randomIndex = Math.floor(Math.random() * projectData.length); // Losowy indeks
-    return { flashcard: projectData[randomIndex], index: randomIndex }; // Zwracamy fiszkę i jej indeks
-};
+}
 
-
-let projectName = localStorage.getItem("selectedProject");
-console.log("Wybrany projekt:", projectName);
-let projectData = JSON.parse(localStorage.getItem(projectName)) || [];
-console.log("Dane projektu:", projectData);
