@@ -87,25 +87,6 @@ let editCard = (element) => {
 }
 
 
-
-let saveLastProjectName = (lastTitle) => {
-    if (lastTitle === '') {
-        Swal.fire("Fill up the title area!");
-    }
-    else {
-        localStorage.setItem('lastProjectTitle', JSON.stringify(lastTitle));
-    }
-}
-
-let loadLatestFromStorage = () => {
-    const latestName = JSON.parse(localStorage.getItem('lastProjectTitle'));
-    if (latestName === undefined) {
-        return;
-    }
-    
-    loadFromStorage(latestName);
-}
-
 let loadCurrentFromStorage = () => {
     const latestName = JSON.parse(localStorage.getItem('currentProjectName'));
     if (latestName === undefined) {
@@ -181,7 +162,7 @@ let createYourProjects = () => {
     let keys = Object.keys(localStorage);
     let tableCount = 1;
     keys.forEach(key => {
-        if (key !== 'stardrewData' & key !== 'lastProjectTitle') {
+        if (key !== 'stardrewData' & key !== 'currentProjectName') {
             console.log(key)
             let data = JSON.parse(localStorage.getItem(key));
                 let buttonHTML = yourProject(tableCount, key);
