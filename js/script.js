@@ -1,10 +1,8 @@
 let cardRow = document.querySelector('#cardRow');
-let projectTitle = document.getElementById('NewProTitle').innerText;
-let projectDescription = document.getElementById('NewProDesc').innerText;
 currentTask = undefined;
 
 window.onload = function() {
-    loadFromStorage();
+    loadLatestFromStorage();
 }
 
 let keyDownTitle = (e) => {
@@ -69,7 +67,7 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
     bigCardDescBack.value = '';
     bigCardTextBack.value = '';
     bigCardTextFront.focus();
-    saveToStorage();
+    saveProject();
 }
 
 let fliptCard = (activeClass, noneClass) => {
@@ -87,39 +85,56 @@ let editCard = (element) => {
     document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
     element.remove();
-    saveToStorage();
+    saveProject();
 }
 
 
 
-let saveToStorage = () => {
-    let projectTitle = document.getElementById('NewProTitle').value;
-    let projectDescription = document.getElementById('NewProDesc').value;
-
-    if (projectTitle === '') {
+let saveLastProjectName = (lastTitle) => {
+    if (lastTitle === '') {
         Swal.fire("Fill up the title area!");
     }
     else {
-        const cards = Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
-            titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
-            descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
-            titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
-            descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText
-        }));
-        localStorage.setItem(projectTitle, JSON.stringify(cards));
+        localStorage.setItem('lastProjectTitle', JSON.stringify(lastTitle));
     }
 }
 
-let loadFromStorage = () => {
+let loadLatestFromStorage = () => {
+    const latestName = JSON.parse(localStorage.getItem('lastProjectTitle'));
+    if (latestName === undefined) {
+        return;
+    }
+    
+    loadFromStorage(latestName);
+}
 
-    const cards = JSON.parse(localStorage.getItem("Project1")) || [];
+
+let loadFromStorage = (projectName) => {
+    const cards = JSON.parse(localStorage.getItem(projectName)) || [];
 
     cards.forEach(card => {
         addCard(card.titleFront, card.descriptionFront || "", card.titleBack, card.descriptionBack || "");
     });
+    document.getElementById('NewProTitle').value = projectName;
 }
 
+let saveProject = () => {
+    let lastTitle = document.getElementById('NewProTitle').value;
+    saveLastProjectName(lastTitle);
+    const cards = getCards();
+    localStorage.setItem(lastTitle, JSON.stringify(cards));
+    console.log('selectedProject');
+    // window.location.href = "startLesson.html";
+};
 
+let getCards = () => {
+    return Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
+        titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
+        descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
+        titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
+        descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText   
+    }));
+}
 
 let closePopup = () => {
     document.querySelector("#editPopupContainer").style.display = "none";
@@ -131,3 +146,37 @@ let flipCard3D = (flipCard) => {
 }
 
 
+
+
+let loadSelectedProject = () => {
+    let projectName = localStorage.getItem("selectedProject");
+    // Odczytujemy dane projektu z localStorage, np. w formie tablicy
+    let projectData = JSON.parse(localStorage.getItem(projectName)) || [];
+}
+
+
+
+
+let createEmptyArrays = () => {
+    localStorage.setItem("correctAnswers", [])
+    localStorage.setItem("wrongAnswers", [])
+}
+
+let getRandomFlashcard = () => {
+    let projectName = localStorage.getItem("selectedProject"); // Pobierz wybrany projekt
+    let projectData = JSON.parse(localStorage.getItem(projectName)) || []; // Pobierz dane projektu
+
+    if (projectData.length === 0) {
+        alert("Brak fiszek w tej kategorii!");
+        return null; // Jeśli tablica jest pusta, kończymy funkcję
+    }
+
+    let randomIndex = Math.floor(Math.random() * projectData.length); // Losowy indeks
+    return { flashcard: projectData[randomIndex], index: randomIndex }; // Zwracamy fiszkę i jej indeks
+};
+
+
+let projectName = localStorage.getItem("selectedProject");
+console.log("Wybrany projekt:", projectName);
+let projectData = JSON.parse(localStorage.getItem(projectName)) || [];
+console.log("Dane projektu:", projectData);

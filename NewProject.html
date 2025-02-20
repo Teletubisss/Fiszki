@@ -14,12 +14,12 @@
     <button type="button" class="btn btn-primary d-flex justify-content-between m-2 GoBack">
         <a class="nav-link px-lg-3" href="index.html">GO BACK!</a>
     </button>
-    <button type="button" class="btn btn-primary d-flex justify-content-between m-2 startLesson">
-        <a class="nav-link px-lg-3" href="StartLesson.html">START LESSON</a>
-    </button>
+    <button type="button" class="btn btn-primary d-flex justify-content-between m-2 startLesson" onclick="saveProject()">Start Lesson</button>
+
     <div class="whiteStripe d-flex">
         <h1 class="mx-auto">New Project</h1>
     </div>
+
     <div class="container my-4">
         <input onkeydown="keyDownTitle(event)" type="text" placeholder="Add a Title" class="m-3 p-3 NewProInput" id="NewProTitle"/>
         <input type="text" placeholder="Add a Description" class="m-3 p-3 NewProInput" id="NewProDesc" />
