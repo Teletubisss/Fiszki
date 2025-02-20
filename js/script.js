@@ -161,7 +161,7 @@ let createEmptyArrays = () => {
 
 let yourProject = (number, projectName) => {
     return `
-            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="window.location.href='NewProject.html';" >
+            <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="loadLesson('${projectName}')" >
                 <div class="roundBtn h5">${number}</div>
                 <span class="h5" id = '${projectName}'>${projectName}</span>
             </button>`;
@@ -182,16 +182,3 @@ let createYourProjects = () => {
 });
 
 }
-
-let loadProject = (element) => {
-
-    const projectName = element.querySelector('span').textContent;
-    if (projectName === undefined) {
-        return;
-    }
-    
-    
-    loadFromStorage(projectName);
-}
-
-
