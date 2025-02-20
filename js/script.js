@@ -1,9 +1,7 @@
 let cardRow = document.querySelector('#cardRow');
 currentTask = undefined;
 
-window.onload = function() {
-    loadLatestFromStorage();
-}
+
 
 let keyDownTitle = (e) => {
     if (e.keyCode === 13) {
@@ -124,7 +122,6 @@ let saveProject = () => {
     const cards = getCards();
     localStorage.setItem(lastTitle, JSON.stringify(cards));
     console.log('selectedProject');
-    // window.location.href = "startLesson.html";
 };
 
 let getCards = () => {
