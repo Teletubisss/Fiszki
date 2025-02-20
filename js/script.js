@@ -1,4 +1,6 @@
 let cardRow = document.querySelector('#cardRow');
+let projectTitle = document.getElementById('NewProTitle').innerText;
+let projectDescription = document.getElementById('NewProDesc').innerText;
 currentTask = undefined;
 
 window.onload = function() {
@@ -91,13 +93,21 @@ let editCard = (element) => {
 
 
 let saveToStorage = () => {
-    const cards = Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
-        titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
-        descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
-        titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
-        descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText
-    }));
-    localStorage.setItem("Project1", JSON.stringify(cards));
+    let projectTitle = document.getElementById('NewProTitle').value;
+    let projectDescription = document.getElementById('NewProDesc').value;
+
+    if (projectTitle === '') {
+        Swal.fire("Fill up the title area!");
+    }
+    else {
+        const cards = Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
+            titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
+            descriptionFront: smallCardStorage.querySelector('#descriptionFrontSmall').innerText,
+            titleBack: smallCardStorage.querySelector('#titleBackSmall').innerText,
+            descriptionBack: smallCardStorage.querySelector('#descriptionBackSmall').innerText
+        }));
+        localStorage.setItem(projectTitle, JSON.stringify(cards));
+    }
 }
 
 let loadFromStorage = () => {
