@@ -177,3 +177,6 @@ let setCurrent = (projectName) => {
     window.location.href = "LastProject.html"
 
 }
+
+
+

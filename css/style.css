@@ -57,6 +57,12 @@ body {
     z-index: 2;
 }
 
+.btn {
+    padding: 15px;
+    background-color: #fff;
+    color: #61278b;
+}
+
 h1 {
     font-size: 6vw;
     font-weight: 800;
@@ -134,11 +140,6 @@ h5{
     }
 }
 
-.btn {
-    padding: 15px;
-    background-color: #fff;
-    color: #61278b;
-}
 
 .roundBtn {
     background-color: pink;
@@ -263,4 +264,30 @@ h5{
     position: fixed;
     bottom: 5%;
     right: 5%;
+}
+
+
+
+
+.ImgStore {
+    height: 180px;
+}
+.TextXPStore {
+    color: #61278b;
+    font-weight: 700;
+}
+
+
+@media (max-width: 800px) {
+    .ImgStore {
+        height: 100px;
+    }
+    .TextXPStore {
+        font-size: 3vw;
+        color: #61278b;
+        font-weight: 700;
+    }
+    .shopButton {
+        padding: 5px;
+    }
 }
