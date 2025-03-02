@@ -107,8 +107,6 @@ let loadFromStorage = (projectName) => {
 }
 
 let saveProject = () => {
-    let lastTitle = document.getElementById('NewProTitle').value;
-    saveLastProjectName(lastTitle);
     const cards = getCards();
     const project = {
         projectName: lastTitle,
@@ -137,13 +135,6 @@ let closePopup = () => {
 let flipCard3D = (flipCard) => {
     const card = document.getElementById(flipCard);
     card.classList.toggle('active');
-}
-
-
-
-let createEmptyArrays = () => {
-    localStorage.setItem("correctAnswers", [])
-    localStorage.setItem("wrongAnswers", [])
 }
 
 

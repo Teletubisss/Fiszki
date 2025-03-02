@@ -1,3 +1,15 @@
 window.onload = function() {
-    createYourProjects();
+    createEmptyArrays();
+}
+
+
+
+let createEmptyArrays = () => {
+    localStorage.setItem("correctAnswers", [])
+    localStorage.setItem("wrongAnswers", [])
+}
+
+
+let correctButton = () => {
+    
 }
