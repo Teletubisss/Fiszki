@@ -115,6 +115,7 @@ let saveProject = () => {
         flips: cards
     }
     localStorage.setItem(lastTitle, JSON.stringify(project));
+    localStorage.setItem('currentProjectName', JSON.stringify(lastTitle));
 };
 
 

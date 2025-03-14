@@ -16,12 +16,8 @@ let changeRandomCard = () => {
 }
 
 let createEmptyArrays = () => {
-    if (!localStorage.getItem("correctAnswers")) {
         localStorage.setItem("correctAnswers", JSON.stringify([]));
-    }
-    if (!localStorage.getItem("wrongAnswers")) {
-        localStorage.setItem("wrongAnswers", JSON.stringify([]));
-    }
+        localStorage.setItem("wrongAnswers", JSON.stringify([]));   
 };
 
 let moveToCategory = (category) => {
@@ -34,7 +30,6 @@ let moveToCategory = (category) => {
         localStorage.setItem("wrongAnswers", JSON.stringify(wrongAnswers));
     }
     projectData.flips = projectData.flips.filter(card => card !== randomCard);
-    debugger;
     localStorage.setItem(currentProjectName, JSON.stringify(projectData));
 
     if (projectData.flips.length === 0 && wrongAnswers.length > 0) {
