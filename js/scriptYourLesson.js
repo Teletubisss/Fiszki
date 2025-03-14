@@ -7,48 +7,43 @@ let currentProjectName = JSON.parse(localStorage.getItem('currentProjectName'));
 let projectData = JSON.parse(localStorage.getItem(currentProjectName));
 let correctAnswers = JSON.parse(localStorage.getItem("correctAnswers") || "[]");
 let wrongAnswers = JSON.parse(localStorage.getItem("wrongAnswers") || "[]");
-let randomIndex = Math.floor(Math.random() * projectData.flips.length);
-let randomCard = projectData.flips[randomIndex];
+let currentCard;
 
-let changeRandomCard = () => {
-    let randomIndex = Math.floor(Math.random() * projectData.flips.length);
-    let randomCard = projectData.flips[randomIndex];
-}
 
 let createEmptyArrays = () => {
         localStorage.setItem("correctAnswers", JSON.stringify([]));
         localStorage.setItem("wrongAnswers", JSON.stringify([]));   
 };
 
+
 let moveToCategory = (category) => {
 
-    if (category === "correct") {
-        correctAnswers.push(randomCard);
-        localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
-    } else if (category === "wrong") {
-        wrongAnswers.push(randomCard);
-        localStorage.setItem("wrongAnswers", JSON.stringify(wrongAnswers));
+    if (category === "correctAnswers") {
+        correctAnswers.push(currentCard);
+    } else if (category === "wrongAnswers") {
+        wrongAnswers.push(currentCard);
     }
-    projectData.flips = projectData.flips.filter(card => card !== randomCard);
-    localStorage.setItem(currentProjectName, JSON.stringify(projectData));
 
-    if (projectData.flips.length === 0 && wrongAnswers.length > 0) {
-        projectData.flips = [...wrongAnswers];
-        localStorage.setItem(currentProjectName, JSON.stringify(projectData));
-        localStorage.setItem("wrongAnswers", JSON.stringify([])); 
+    if (projectData.flips.includes(currentCard)) {
+        projectData.flips = projectData.flips.filter(card => card !== currentCard);
+    } else {
+        wrongAnswers = wrongAnswers.filter(card => card !== currentCard);
     }
-    changeRandomCard();
+
+    localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+    localStorage.setItem("wrongAnswers", JSON.stringify(wrongAnswers));
+
     showRandomCard();
+
 }
 
 
-
-
-
 let showRandomCard = () => {
-    
-    document.querySelector("#startLessonTitleFront").innerText = randomCard.titleFront;
-    document.querySelector("#startLessonDescFront").innerText = randomCard.descriptionFront;
-    document.querySelector("#startLessonTitleBack").innerText = randomCard.titleBack;
-    document.querySelector("#startLessonDescBack").innerText = randomCard.descriptionBack;
+    let cards = projectData.flips.length > 0 ? projectData.flips : projectData.wrongAnswers;
+    currentCard = cards[Math.floor(Math.random() * cards.length)];
+    console.log(currentCard)
+    document.querySelector("#startLessonTitleFront").innerText = currentCard.titleFront;
+    document.querySelector("#startLessonDescFront").innerText = currentCard.descriptionFront;
+    document.querySelector("#startLessonTitleBack").innerText = currentCard.titleBack;
+    document.querySelector("#startLessonDescBack").innerText = currentCard.descriptionBack;
 }
