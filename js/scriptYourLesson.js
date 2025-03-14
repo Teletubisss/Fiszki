@@ -18,22 +18,37 @@ let createEmptyArrays = () => {
 
 let moveToCategory = (category) => {
 
-    if (category === "correctAnswers") {
-        correctAnswers.push(currentCard);
-    } 
-    if (category === "wrongAnswers") {
-        wrongAnswers.push(currentCard);
+    if (projectData.flips.length === 0 && wrongAnswers.length > 0) {
+        debugger;
+        let projectTitle = localStorage.currentProjectName;
+            projectData.flips = [...wrongAnswers];
+            console.log(projectData)
+            localStorage.setItem(currentProjectName, JSON.stringify(projectData));
+            localStorage.setItem('currentProjectName', JSON.stringify(projectTitle));
+            localStorage.setItem("wrongAnswers", JSON.stringify([]));
+        }
+    else {
+        if (category === "correctAnswers") {
+            correctAnswers.push(currentCard);
+        } 
+        if (category === "wrongAnswers") {
+            wrongAnswers.push(currentCard);
+        }
+        if (projectData.flips.includes(currentCard)) {
+            projectData.flips = projectData.flips.filter(card => card !== currentCard);
+        } 
+        else if (projectData.wrongAnswers.includes(currentCard)) {
+            projectData.wrongAnswers = projectData.wrongAnswers.filter(card => card !== currentCard);
+    
+    
+        }  
+
+
+        localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
+        localStorage.setItem("wrongAnswers", JSON.stringify(wrongAnswers));
+        localStorage.setItem(currentProjectName, JSON.stringify(projectData));
     }
-    if (projectData.flips.includes(currentCard)) {
-        projectData.flips = projectData.flips.filter(card => card !== currentCard);
-    } else if (projectData.wrongAnswers.includes(currentCard)) {
-        projectData.wrongAnswers = projectData.wrongAnswers.filter(card => card !== currentCard);
-}
 
-
-    localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
-    localStorage.setItem("wrongAnswers", JSON.stringify(wrongAnswers));
-    localStorage.setItem(currentProjectName, JSON.stringify(projectData));
 
     showRandomCard();
 
@@ -41,7 +56,7 @@ let moveToCategory = (category) => {
 
 
 let showRandomCard = () => {
-    let cards = projectData.flips.length > 0 ? projectData.flips : projectData.wrongAnswers;
+    let cards = projectData.flips.length > 0 ? projectData.flips : wrongAnswers;
     currentCard = cards[Math.floor(Math.random() * cards.length)];
     console.log(currentCard)
     document.querySelector("#startLessonTitleFront").innerText = currentCard.titleFront;
