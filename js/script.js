@@ -108,6 +108,7 @@ let loadFromStorage = (projectName) => {
 
 let saveProject = () => {
     const cards = getCards();
+    const lastTitle = document.querySelector('#NewProTitle').value;
     const project = {
         projectName: lastTitle,
         projectDecription: 'tutaj desc',
@@ -153,8 +154,7 @@ let createYourProjects = () => {
     let keys = Object.keys(localStorage);
     let tableCount = 1;
     keys.forEach(key => {
-        if (key !== 'stardrewData' & key !== 'currentProjectName') {
-            console.log(key)
+        if (key !== 'stardrewData' & key !== 'currentProjectName' & key !== 'wrongAnswers' & key !== 'correctAnswers') {
             let data = JSON.parse(localStorage.getItem(key));
                 let buttonHTML = yourProject(tableCount, key);
                 row.innerHTML += buttonHTML; 
