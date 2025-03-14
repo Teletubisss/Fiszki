@@ -20,7 +20,8 @@ let moveToCategory = (category) => {
 
     if (category === "correctAnswers") {
         correctAnswers.push(currentCard);
-    } else if (category === "wrongAnswers") {
+    } 
+    if (category === "wrongAnswers") {
         wrongAnswers.push(currentCard);
     }
 
