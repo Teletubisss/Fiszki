@@ -24,15 +24,16 @@ let moveToCategory = (category) => {
     if (category === "wrongAnswers") {
         wrongAnswers.push(currentCard);
     }
-
     if (projectData.flips.includes(currentCard)) {
         projectData.flips = projectData.flips.filter(card => card !== currentCard);
-    } else {
-        wrongAnswers = wrongAnswers.filter(card => card !== currentCard);
-    }
+    } else if (projectData.wrongAnswers.includes(currentCard)) {
+        projectData.wrongAnswers = projectData.wrongAnswers.filter(card => card !== currentCard);
+}
+
 
     localStorage.setItem("correctAnswers", JSON.stringify(correctAnswers));
     localStorage.setItem("wrongAnswers", JSON.stringify(wrongAnswers));
+    localStorage.setItem(currentProjectName, JSON.stringify(projectData));
 
     showRandomCard();
 
