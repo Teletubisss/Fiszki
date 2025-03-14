@@ -20,7 +20,7 @@ let moveToCategory = (category) => {
 
     if (projectData.flips.length === 0 && wrongAnswers.length > 0) {
         debugger;
-        let projectTitle = localStorage.currentProjectName;
+        let projectTitle = localStorage.currentProjectName.value;
             projectData.flips = [...wrongAnswers];
             console.log(projectData)
             localStorage.setItem(currentProjectName, JSON.stringify(projectData));
