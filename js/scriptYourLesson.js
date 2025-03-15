@@ -2,15 +2,23 @@ window.onload = function() {
     showRandomCard();
 }
 
+let startTime = new Date().getTime();
 let currentProjectName = JSON.parse(localStorage.getItem('currentProjectName'));
 let projectData = JSON.parse(localStorage.getItem(currentProjectName));
 let correctAnswers = [];
 let wrongAnswers = [];
 let currentCard;
+let totalClicks = JSON.parse(localStorage.getItem("totalClicks")) || 0;
+let correctClicks = JSON.parse(localStorage.getItem("correctClicks")) || 0;
 
 let moveToCategory = (category) => {
-    if (category === "correctAnswers")
+
+    totalClicks++;
+    
+    if (category === "correctAnswers") {
         correctAnswers.push(currentCard);
+        correctClicks++;
+    }
     
     if (category === "wrongAnswers")
         wrongAnswers.push(currentCard);
@@ -40,7 +48,28 @@ let showRandomCard = () => {
         document.querySelector("#startLessonDescFront").innerText = currentCard.descriptionFront;
         document.querySelector("#startLessonTitleBack").innerText = currentCard.titleBack;
         document.querySelector("#startLessonDescBack").innerText = currentCard.descriptionBack;
-    } else {
-        swal.fire('Endo :)'); 
+    } 
+    else {
+        let correctPercentage = totalClicks > 0 ? (correctClicks / totalClicks) * 100 : 0;
+        let xpGained = correctPercentage * 2.5;
+        console.log(xpGained)
+
+        let endTime = new Date().getTime();
+        let elapsedTime = Math.floor((endTime - startTime) / 1000); 
+
+        localStorage.setItem("lessonResults", JSON.stringify({
+            correctPercentage: correctPercentage.toFixed(2) + "%",
+            xpGained: xpGained.toFixed(0) + "XP",
+            elapsedTime: elapsedTime + " sekund"
+
+        }));
+
+        let playerXP = parseFloat(localStorage.getItem("playerXP")) || 0;
+        console.log(playerXP);
+        playerXP += xpGained;
+        localStorage.setItem("playerXP", JSON.stringify(playerXP));
+        debugger;
+
+        window.location.href = "MyStats.html";
     }
 }
