@@ -23,6 +23,9 @@ let moveToCategory = (category) => {
         wrongAnswers= [];
     }
 
+    if (document.getElementById('cardLesson').classList.contains('active')) {
+        document.getElementById('cardLesson').classList.remove('active');
+    }
     console.log('data: ' + projectData.flips.length + ', correct: ' + correctAnswers.length + 'wrong: ' + wrongAnswers.length);
 
     showRandomCard();

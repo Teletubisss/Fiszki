@@ -162,7 +162,7 @@ h5{
     width: 70vw;
 }
 .active {
-    transform: perspective(300px) rotateY(180deg);
+    transform: perspective(100px) rotateY(180deg);
 }
 
 .bigCard {
