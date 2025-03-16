@@ -1,9 +1,9 @@
+window.onload = function() {
+    localStorage.setItem("playerXP", JSON.stringify(100000000000));
+}
 
 let cardRow = document.querySelector('#cardRow');
 currentTask = undefined;
-
-
-
 
 let keyDownTitle = (e) => {
     if (e.keyCode === 13) {
@@ -88,7 +88,6 @@ let editCard = (element) => {
     saveProject();
 }
 
-
 let loadCurrentFromStorage = () => {
     const latestName = JSON.parse(localStorage.getItem('currentProjectName'));
     if (latestName === undefined) {
@@ -97,7 +96,6 @@ let loadCurrentFromStorage = () => {
     
     loadFromStorage(latestName);
 }
-
 
 let loadFromStorage = (projectName) => {
     const project = JSON.parse(localStorage.getItem(projectName)) || [];
@@ -120,9 +118,6 @@ let saveProject = () => {
     localStorage.setItem('currentProjectName', JSON.stringify(lastTitle));
 };
 
-
-
-
 let getCards = () => {
     return Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
         titleFront: smallCardStorage.querySelector("#titleFrontSmall").innerText,
@@ -141,9 +136,6 @@ let flipCard3D = (flipCard) => {
     card.classList.toggle('active');
 }
 
-
-
-
 let yourProject = (number, projectName) => {
     return `
             <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="setCurrent('${projectName}')" >
@@ -158,10 +150,9 @@ let createYourProjects = () => {
     let tableCount = 1;
     keys.forEach(key => {
         if (key !== 'stardrewData' & key !== 'currentProjectName' & key !== 'lessonResults' & key !== 'playerXP') {
-            let data = JSON.parse(localStorage.getItem(key));
-                let buttonHTML = yourProject(tableCount, key);
-                row.innerHTML += buttonHTML; 
-                tableCount++;
+            let buttonHTML = yourProject(tableCount, key);
+            row.innerHTML += buttonHTML; 
+            tableCount++;
         }
     });
 }
@@ -172,14 +163,11 @@ let setCurrent = (projectName) => {
 
 }
 
-
-
-let currentAvatar = document.querySelector('.avatar').src;
 let playerXP = JSON.parse(localStorage.getItem("playerXP")) || 0;
 if (localStorage.getItem("currentAvatar")) {
     document.querySelector('.avatar').src = JSON.parse(localStorage.getItem("currentAvatar"));
 }
-
+let currentAvatar = document.querySelector('.avatar').src;
 
 let buyAvatar = (button, avatarSrc) => {
     localStorage.setItem("currentAvatar", JSON.stringify(currentAvatar));
@@ -209,15 +197,8 @@ let buyAvatar = (button, avatarSrc) => {
 }
 
 function selectAvatar(button, avatarSrc) {
-
-    let previousAvatar = currentAvatar; 
-
     currentAvatar = avatarSrc;
     localStorage.setItem("currentAvatar", JSON.stringify(avatarSrc));
 
-    let imgInStore = button.closest('.card-body').querySelector('.ImgStore');
-    imgInStore.src = previousAvatar;
+    document.querySelector('.avatar').src = avatarSrc;
 }
-
-
-
