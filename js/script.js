@@ -1,3 +1,4 @@
+
 let cardRow = document.querySelector('#cardRow');
 currentTask = undefined;
 
@@ -156,7 +157,7 @@ let createYourProjects = () => {
     let keys = Object.keys(localStorage);
     let tableCount = 1;
     keys.forEach(key => {
-        if (key !== 'stardrewData' & key !== 'currentProjectName' & key !== 'wrongAnswers' & key !== 'correctAnswers') {
+        if (key !== 'stardrewData' & key !== 'currentProjectName' & key !== 'lessonResults' & key !== 'playerXP') {
             let data = JSON.parse(localStorage.getItem(key));
                 let buttonHTML = yourProject(tableCount, key);
                 row.innerHTML += buttonHTML; 
@@ -169,6 +170,53 @@ let setCurrent = (projectName) => {
     localStorage.setItem('currentProjectName', JSON.stringify(projectName));
     window.location.href = "LastProject.html"
 
+}
+
+
+
+let currentAvatar = document.querySelector('.avatar').src;
+let playerXP = JSON.parse(localStorage.getItem("playerXP")) || 0;
+if (localStorage.getItem("currentAvatar")) {
+    document.querySelector('.avatar').src = JSON.parse(localStorage.getItem("currentAvatar"));
+}
+
+
+let buyAvatar = (button, avatarSrc) => {
+    localStorage.setItem("currentAvatar", JSON.stringify(currentAvatar));
+    if (button.innerText === "SELECT") {
+        selectAvatar(button, avatarSrc);
+        return;
+    }
+
+    if (playerXP >= 2000) {
+        playerXP -= 2000;
+        localStorage.setItem("playerXP", JSON.stringify(playerXP));
+
+        button.innerText = "SELECT";
+        Swal.fire({
+            title: "Good job!",
+            text: "Your new avatar is now ready!",
+            icon: "success"
+          });
+    } 
+    else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Your don't have enough XP!",
+          });
+    }
+}
+
+function selectAvatar(button, avatarSrc) {
+
+    let previousAvatar = currentAvatar; 
+
+    currentAvatar = avatarSrc;
+    localStorage.setItem("currentAvatar", JSON.stringify(avatarSrc));
+
+    let imgInStore = button.closest('.card-body').querySelector('.ImgStore');
+    imgInStore.src = previousAvatar;
 }
 
 
