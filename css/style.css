@@ -22,6 +22,11 @@ body {
     font-weight: 700;
 }
 
+.avatar {
+    width: 150px;
+    height: auto;
+}
+
 #backgroundPink {
     position: fixed;
     z-index: -5;
@@ -155,10 +160,6 @@ h5{
     .bigCard {
         height: 70vw;
     }
-    .imageMain {
-        width: 60%;
-        height: auto;
-    }
 }
 
 
@@ -169,10 +170,6 @@ h5{
     border-radius: 25px;
 }
 
-.imageMain {
-    width: 60%;
-    height: auto;
-}
 
 .whiteStripe {
     padding: 5px;

@@ -1,7 +1,4 @@
-window.onload = function() {
-    localStorage.setItem("playerXP", JSON.stringify(100000000000));
-}
-
+    
 let cardRow = document.querySelector('#cardRow');
 currentTask = undefined;
 
