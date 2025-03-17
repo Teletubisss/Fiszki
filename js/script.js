@@ -52,19 +52,29 @@ let descriptionKeyDown = (e, titleSelectorId, decriptionSelectorId) => {
 }
 
 let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorIdBack, descriptionSelectorIdBack) => {
-    let bigCardTextFront = document.querySelector(titleSelectorIdFront);
-    let bigCardDescFront = document.querySelector(decriptionSelectorIdFront);
-    let bigCardTextBack = document.querySelector(titleSelectorIdBack);
-    let bigCardDescBack = document.querySelector(descriptionSelectorIdBack);
-    closePopup();
+    if (document.querySelector(titleSelectorIdFront).value !== '' && document.querySelector(titleSelectorIdBack).value !== '') {
+        let bigCardTextFront = document.querySelector(titleSelectorIdFront);
+        let bigCardDescFront = document.querySelector(decriptionSelectorIdFront);
+        let bigCardTextBack = document.querySelector(titleSelectorIdBack);
+        let bigCardDescBack = document.querySelector(descriptionSelectorIdBack);
+        closePopup();
 
-    addCard(bigCardTextFront.value, bigCardDescFront.value, bigCardTextBack.value, bigCardDescBack.value);
-    bigCardDescFront.value = '';
-    bigCardTextFront.value = '';
-    bigCardDescBack.value = '';
-    bigCardTextBack.value = '';
-    bigCardTextFront.focus();
-    saveProject();
+        addCard(bigCardTextFront.value, bigCardDescFront.value, bigCardTextBack.value, bigCardDescBack.value);
+        bigCardDescFront.value = '';
+        bigCardTextFront.value = '';
+        bigCardDescBack.value = '';
+        bigCardTextBack.value = '';
+        bigCardTextFront.focus();
+        saveProject();
+    }
+    else {
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Add a Title to both sides of your card!",
+          });
+    }
+
 }
 
 let fliptCard = (activeClass, noneClass) => {
@@ -198,4 +208,17 @@ function selectAvatar(button, avatarSrc) {
     localStorage.setItem("currentAvatar", JSON.stringify(avatarSrc));
 
     document.querySelector('.avatar').src = avatarSrc;
+}
+
+function startLessonButton() {
+    if (document.querySelector('#NewProTitle').value !== "") {
+        saveProject();
+        window.location.href = "StartLesson.html";
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Make sure to add a title to your project!",
+        });
+    }
 }
