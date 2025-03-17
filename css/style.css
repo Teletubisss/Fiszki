@@ -3,15 +3,16 @@
     box-sizing: border-box;
     margin: 0;
 }
+html {
+    overflow-x: hidden;
+}
 body {
     font-size: 1vw;
-    width: 99vw;
+    width: 100vw;
     color: #61278b;
     font-family: Garbata;
+    overflow-x: hidden;
 
-}
-.body100 {
-    width: 100%;
 }
 
 .bold {
@@ -32,7 +33,8 @@ body {
     position: fixed;
     z-index: -5;
     top: 0;
-    left: 50%;
+    right: 0;
+    left: auto;
     width: 50%;
     height: 100%;
     background-color: #61278b; 
@@ -142,6 +144,7 @@ h5{
     }
     .purpleBg {
         background-color: #61278b;
+        width: 100vw;
     }
     h6 {
         font-size: 3vw;
