@@ -1,5 +1,6 @@
 window.onload = function() {
     showRandomCard();
+    updateLessonStats();
 }
 
 let startTime = new Date().getTime();
@@ -37,6 +38,7 @@ let moveToCategory = (category) => {
     console.log('data: ' + projectData.flips.length + ', correct: ' + correctAnswers.length + 'wrong: ' + wrongAnswers.length);
 
     showRandomCard();
+    updateLessonStats();
 }
 
 let showRandomCard = () => {
@@ -70,4 +72,11 @@ let showRandomCard = () => {
 
         window.location.href = "MyStats.html";
     }
+}
+
+
+let updateLessonStats = () => {
+    document.getElementById('correctAnswersDisplay').innerText = correctAnswers.length;
+    document.getElementById('wrongAnswersDisplay').innerText = wrongAnswers.length;
+    document.getElementById('cardsLeftDisplay').innerText = projectData.flips.length;
 }

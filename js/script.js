@@ -161,7 +161,7 @@ let setCurrent = (projectName) => {
 }
 
 let playerXP = JSON.parse(localStorage.getItem("playerXP")) || 0;
-if (localStorage.getItem("currentAvatar")) {
+if (localStorage.getItem("currentAvatar") && document.querySelector('.avatar')) {
     document.querySelector('.avatar').src = JSON.parse(localStorage.getItem("currentAvatar"));
 }
 let currentAvatar = document.querySelector('.avatar').src;

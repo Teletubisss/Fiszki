@@ -313,3 +313,9 @@ h5{
         padding: 5px;
     }
 }
+
+
+
+#correctAnswersDisplay, #wrongAnswersDisplay, #cardsLeftDisplay {
+    font-weight: 700;
+}
