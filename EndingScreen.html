@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/x-icon" href="./images/favIco.png">
+</head>
+<body>
+    <div id="backgroundPink"></div>
+    <div id="backgroundPurple"></div>
+    <div class="row row-cols-md-2 row-cols-1" id="cardRow">
+        <div class="col-lg-6 col-12 px-5 py-3">
+            <h2 class="py-4">Lesson Complete</h2>
+            <div class="grid gap-3">
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">1</div>
+                    <h4 class="p-2 px-5">Your Time: </h4>
+                    <h4 id="timeLesson"></h4>
+                </div>
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">2</div>
+                    <h4 class="p-2 px-5">Your Best Time In This Lesson: </h4>
+                    <h4 id="bestTimeLesson"></h4>
+                </div>
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">3</div>
+                    <h4 class="p-2 px-5">Your Result: </h4>
+                    <h4 id="result"></h4>
+                </div>
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">4</div>
+                    <h4 class="p-2 px-5">Your Best Result In This Lesson: </h4>
+                    <h4 id="bestResult"></h4>
+                </div>
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">5</div>
+                    <h4 class="p-2 px-5">Times You Did This Lesson: </h4>
+                    <h4 id="times"></h4>
+                </div>
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">6</div>
+                    <h4 class="p-2 px-5">XP Earned: </h4>
+                    <h4 id="earnedXP"></h4>
+                </div>
+                <div class="p-2 m-3 g-col-6 completeTable d-flex align-items-center">
+                    <div class="roundBtn d-flex justify-content-center align-items-center h5">6</div>
+                    <h4 class="p-2 px-5">Your Total XP: </h4>
+                    <h4 id="TotalXP"></h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12 d-flex justify-content-center align-items-center purpleBg">
+            <img src="./images/Projekt bez nazwy.png" alt="" class="imageComplete avatar">
+            <button type="button" class="btn btn-secondary d-flex justify-content-between m-2 GoBackComplete">
+                <a class="nav-link px-lg-3" href="index.html">GO BACK!</a>
+            </button>
+        </div>
+    </div>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

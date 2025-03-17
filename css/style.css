@@ -14,6 +14,9 @@ body {
     overflow-x: hidden;
 
 }
+.body100 {
+    width: 100%;
+}
 
 .bold {
     font-weight: 700;
@@ -153,7 +156,8 @@ h5{
         height: 70vw;
     }
     .imageMain {
-        width: 100%;
+        width: 60%;
+        height: auto;
     }
 }
 

@@ -52,7 +52,6 @@ let showRandomCard = () => {
     else {
         let correctPercentage = totalClicks > 0 ? (correctClicks / totalClicks) * 100 : 0;
         let xpGained = correctPercentage * 2.5;
-        console.log(xpGained)
 
         let endTime = new Date().getTime();
         let elapsedTime = Math.floor((endTime - startTime) / 1000); 
@@ -65,10 +64,9 @@ let showRandomCard = () => {
         }));
 
         let playerXP = parseFloat(localStorage.getItem("playerXP")) || 0;
-        console.log(playerXP);
         playerXP += xpGained;
         localStorage.setItem("playerXP", JSON.stringify(playerXP));
-        debugger;
+
 
         window.location.href = "MyStats.html";
     }
