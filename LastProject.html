@@ -33,8 +33,8 @@
                                 <button onclick="flipCard3D('bigCard')" type="button" class="flip-trigger btn btn-primary d-flex justify-content-between m-2">FLIP</button>
                                 <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                             </div>
-                          <input onkeydown="titleKeyDown(event, '#descriptionInputFront')" type="text" id="titleInputFront" placeholder="Add a Title" class="m-4 p-3" value=""/>
-                          <input onkeydown="descriptionKeyDown(event, '#titleInputFront', '#descriptionInputFront')" type="text" id="descriptionInputFront" placeholder="Add a Description" class="m-4 p-1" />
+                          <input onkeydown="keyDown(event, 'titleInputFront')" type="text" id="titleInputFront" placeholder="Add a Title" class="m-4 p-3" value=""/>
+                          <input onkeydown="keyDown(event, 'descriptionInputFront')" type="text" id="descriptionInputFront" placeholder="Add a Description" class="m-4 p-1" />
                         </div>
                     </div>
                     <div class="back" id="back">
@@ -43,8 +43,8 @@
                                 <button onclick="flipCard3D('bigCard')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
                                 <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                             </div>
-                          <input onkeydown="titleKeyDown(event, '#descriptionInputBack')" type="text" id="titleInputBack" placeholder="Add a Title" class="m-4 p-3" value=""/>
-                          <input onkeydown="descriptionKeyDown(event, '#titleInputBack', '#descriptionInputBack')" type="text" id="descriptionInputBack" placeholder="Add a Description" class="m-4 p-1" />
+                          <input onkeydown="keyDown(event, 'titleInputBack')" type="text" id="titleInputBack" placeholder="Add a Title" class="m-4 p-3" value=""/>
+                          <input onkeydown="keyDown(event, 'descriptionInputBack')" type="text" id="descriptionInputBack" placeholder="Add a Description" class="m-4 p-1" />
                         </div>
                     </div>
             </div>
@@ -62,8 +62,8 @@
                         <button onclick="flipCard3D('Popup')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
                         <button onclick="saveCard('#titleInputPopup', '#descriptionInputPopup', '#titleInputPopupBack', '#descriptionInputPopupBack')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                     </div>
-                  <input onkeydown="titleKeyDown(event, '#descriptionInputPopup')" type="text" id="titleInputPopup" placeholder="Add a Title" class="m-4 p-3" value=""/>
-                  <input onkeydown="descriptionKeyDown(event, '#titleInputPopup', '#descriptionInputPopup')" type="text" id="descriptionInputPopup" placeholder="Add a Description" class="m-4 p-1" />
+                  <input onkeydown="keyDown(event, 'titleInputPopup')" type="text" id="titleInputPopup" placeholder="Add a Title" class="m-4 p-3" value=""/>
+                  <input onkeydown="keyDown(event, 'descriptionInputPopup')" type="text" id="descriptionInputPopup" placeholder="Add a Description" class="m-4 p-1" />
                 </div>
             </div>
             <div class="back" id="backPopup">
@@ -72,8 +72,8 @@
                         <button onclick="flipCard3D('Popup')" type="button" class="btn btn-primary d-flex justify-content-between m-2">FLIP</button>
                         <button onclick="saveCard('#titleInputPopup', '#descriptionInputPopup', '#titleInputPopupBack', '#descriptionInputPopupBack')", type="button" class="btn btn-secondary d-flex justify-content-between m-2">SAVE</button>
                     </div>
-                  <input onkeydown="titleKeyDown(event, '#descriptionInputPopupBack')" type="text" id="titleInputPopupBack" placeholder="Add a Title" class="m-4 p-3" value=""/>
-                  <input onkeydown="descriptionKeyDown(event, '#titleInputPopupBack', '#descriptionInputPopupBack')" type="text" id="descriptionInputPopupBack" placeholder="Add a Description" class="m-4 p-1" />
+                  <input onkeydown="keyDown(event, 'titleInputPopupBack')" type="text" id="titleInputPopupBack" placeholder="Add a Title" class="m-4 p-3" value=""/>
+                  <input onkeydown="keyDown(event, 'descriptionInputPopupBack')" type="text" id="descriptionInputPopupBack" placeholder="Add a Description" class="m-4 p-1" />
                 </div>
             </div>
         </div>

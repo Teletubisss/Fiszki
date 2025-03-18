@@ -45,9 +45,39 @@ let titleKeyDown = (e, descriptionSelectorId) => {
     }
 }
 
-let descriptionKeyDown = (e, titleSelectorId, decriptionSelectorId) => {
+let keyDown = (e, focusPart) => {
     if (e.keyCode === 13) {
-        saveCard(titleSelectorId, decriptionSelectorId)
+        if (focusPart === 'descriptionInputFront') {
+            flipCard3D('bigCard')
+            document.querySelector('#titleInputBack').focus();
+        }
+        if (focusPart === 'descriptionInputBack') {
+            saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')
+            flipCard3D('bigCard');
+            document.querySelector('#titleInputFront').focus();
+        }
+        if (focusPart === 'titleInputFront') {
+            document.querySelector("#descriptionInputFront").focus();
+        }
+        if (focusPart === 'titleInputBack') {
+            document.querySelector("#descriptionInputBack").focus();
+        }
+
+        if (focusPart === 'descriptionInputPopup') {
+            flipCard3D('Popup')
+            document.querySelector('#titleInputPopupBack').focus();
+        }
+        if (focusPart === 'descriptionInputPopupBack') {
+            saveCard('#titleInputPopup', '#descriptionInputPopup', '#titleInputPopupBack', '#descriptionInputPopupBack')
+            flipCard3D('Popup');
+            document.querySelector('#titleInputPopup').focus();
+        }
+        if (focusPart === 'titleInputPopup') {
+            document.querySelector("#descriptionInputPopup").focus();
+        }
+        if (focusPart === 'titleInputPopupBack') {
+            document.querySelector("#descriptionInputPopupBack").focus();
+        }
     }
 }
 
@@ -58,13 +88,13 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
         let bigCardTextBack = document.querySelector(titleSelectorIdBack);
         let bigCardDescBack = document.querySelector(descriptionSelectorIdBack);
         closePopup();
+        document.querySelector('#titleInputFront').focus();
 
         addCard(bigCardTextFront.value, bigCardDescFront.value, bigCardTextBack.value, bigCardDescBack.value);
         bigCardDescFront.value = '';
         bigCardTextFront.value = '';
         bigCardDescBack.value = '';
-        bigCardTextBack.value = '';
-        bigCardTextFront.focus();
+        bigCardTextBack.value = ''; 
         saveProject();
     }
     else {
@@ -77,13 +107,6 @@ let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorId
 
 }
 
-let fliptCard = (activeClass, noneClass) => {
-    let active = document.querySelector(activeClass);
-    let none = document.querySelector(noneClass);
-    active.classList.add('hidden');
-    none.classList.remove('hidden');
-}
-
 let editCard = (element) => {
     
     document.querySelector('#editPopupContainer').style.display = "flex"
@@ -92,6 +115,7 @@ let editCard = (element) => {
     document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
     element.remove();
+    document.querySelector('#titleInputPopup').focus();
     saveProject();
 }
 
