@@ -180,11 +180,13 @@ let createYourProjects = () => {
     let keys = Object.keys(localStorage);
     let tableCount = 1;
     keys.forEach(key => {
-        if (key !== 'stardrewData' & key !== 'currentProjectName' & key !== 'lessonResults' & key !== 'playerXP' & key !== 'currentAvatar') {
-            let buttonHTML = yourProject(tableCount, key);
-            row.innerHTML += buttonHTML; 
-            tableCount++;
+        var value = JSON.parse(localStorage.getItem(key));
+        if (value.projectName === undefined) {
+            return;
         }
+        let buttonHTML = yourProject(tableCount, key);
+        row.innerHTML += buttonHTML; 
+        tableCount++;
     });
 }
 
