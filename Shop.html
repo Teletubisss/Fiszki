@@ -16,17 +16,19 @@
             <div class="d-flex flex-column align-items-center">
                 <h1 class="mx-5 my-3">Shop</h1>
                 <h4 class="mx-5">Earn points to change the look of your avatar!</h4>
-                <img src="./images/Projekt bez nazwy.png" alt="" class="my-4">
+                <h4 class="mx-5 bold my-3">YOUR XP:</h4>
+                <h4 class="mx-5 XP bold"></h4>
+                <img src="./images/Projekt bez nazwy.png" alt="" class="my-4 avatar">
             </div>
         </div>
-        <div class="col-md-2 container px-5 m-0 flex-fill purpleBg">
+        <div class="col-md-2 container m-0 flex-fill purpleBg">
             <div class="container purpleBg py-5">
                 <div class="row row-cols-md-2 mx-5">
                     <div class="col-6">
                         <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center px-5">
                                     <h4 class="m-2 TextXPStore">2000XP</h4>
-                                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
+                                    <button onclick="buyAvatar(this, './images/Projekt bez nazwy (7).png')" type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
                                     <img class="ImgStore" src="./images/Projekt bez nazwy (7).png" alt="">
                             </div>
                         </div>
@@ -35,7 +37,7 @@
                         <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center px-5">
                                     <h4 class="m-2 TextXPStore">2000XP</h4>
-                                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
+                                    <button onclick="buyAvatar(this, './images/Projekt bez nazwy (1).png')" type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
                                     <img class="ImgStore" src="./images/Projekt bez nazwy (1).png" alt="">
                             </div>
                         </div>
@@ -44,7 +46,7 @@
                         <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center px-5">
                                     <h4 class="m-2 TextXPStore">2000XP</h4>
-                                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
+                                    <button onclick="buyAvatar(this, './images/Projekt bez nazwy (2).png')" type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
                                     <img class="ImgStore" src="./images/Projekt bez nazwy (2).png" alt="">
                             </div>
                         </div>
@@ -53,7 +55,7 @@
                         <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center px-5">
                                     <h4 class="m-2 TextXPStore">2000XP</h4>
-                                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
+                                    <button onclick="buyAvatar(this, './images/Projekt bez nazwy (4).png')" type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
                                     <img class="ImgStore" src="./images/Projekt bez nazwy (4).png" alt="">
                             </div>
                         </div>
@@ -62,7 +64,7 @@
                         <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center px-5">
                                     <h4 class="m-2 TextXPStore">2000XP</h4>
-                                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
+                                    <button onclick="buyAvatar(this, './images/Projekt bez nazwy (10).png')" type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
                                     <img class="ImgStore" src="./images/Projekt bez nazwy (10).png" alt="">
                             </div>
                         </div>
@@ -71,7 +73,7 @@
                         <div class="card d-flex justify-content-center align-items-center p-4 mb-3">
                             <div class="card-body d-flex flex-column justify-content-center align-items-center px-5">
                                     <h4 class="m-2 TextXPStore">2000XP</h4>
-                                    <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
+                                    <button onclick="buyAvatar(this, './images/Projekt bez nazwy (9).png')" type="button" class="btn btn-primary d-flex justify-content-center align-items-center shopButton m-2">BUY</button>
                                     <img class="ImgStore" src="./images/Projekt bez nazwy (9).png" alt="">
                             </div>
                         </div>
@@ -84,8 +86,8 @@
         <a class="nav-link px-lg-3" href="index.html">GO BACK!</a>
     </button>
 
-    <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/scriptProjects.js"></script>
+    <script src="js/sweetalert2@11.js"></script>
+    <script src="js/scriptIndex.js"></script>
 </body>
 </html>

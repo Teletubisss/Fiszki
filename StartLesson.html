@@ -17,35 +17,45 @@
     <div class="whiteStripe d-flex">
         <h1 class="mx-auto">Learning Time!</h1>
     </div>
-    <div class="container d-flex justify-content-center flex-fill w-100 my-3">
+    <div class="container d-flex justify-content-center flex-fill w-100 my-2 py-3">
       <div class="card cardLesson" id="cardLesson" style="width: 18rem;">
         <div class="front" id="frontLesson">
             <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
               <button onclick="flipCard3D('cardLesson')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
-              <h5 class="p-3">Tekst</h5>
-              <p id="">Description</p>
+              <h5 class="p-3" id="startLessonTitleFront"></h5>
+              <p id="startLessonDescFront"></p>
             </div>
         </div>
         <div class="back" id="backLesson">
           <div class="card-body d-flex flex-column justify-content-center align-items-center p-5">
             <button onclick="flipCard3D('cardLesson')" type="button" class="btn btn-secondary d-flex justify-content-between m-2">FLIP</button>
-            <h5 class="p-3">Tekst</h5>
-            <p id="">Description</p>
+            <h5 class="p-3" id="startLessonTitleBack"></h5>
+            <p id="startLessonDescBack"></p>
           </div>
         </div>
       </div>
-  </div>
-    <div class="d-flex container w-100 justify-content-center">
-        <button onclick="flipCard('#back', '#front')" type="button" class="btn d-flex justify-content-center align-items-center correctButton mx-2">CORRECT</button>
-        <button onclick="saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')" type="button" class="btn wrongButton d-flex justify-content-center align-items-center mx-2">WRONG</button>
     </div>
-    <div class="container d-flex flex-column align-items-center whiteStripe my-4 p-3 w-25">
-      <h6>CORRECT ANSWERS: </h6>
-      <h6>WRONG ANSWERS: </h6>
-      <h6>CARD: x/x</h6>
+    <div class="d-flex container py-2 w-100 justify-content-center">
+        <button type="button" class="btn d-flex justify-content-center align-items-center correctButton mx-2" onclick="moveToCategory('correctAnswers')">CORRECT</button>
+        <button type="button" class="btn wrongButton d-flex justify-content-center align-items-center mx-2" onclick="moveToCategory('wrongAnswers')">WRONG</button>
+    </div>
+    <div class="container d-flex flex-column align-items-center whiteStripe my-2 p-3 w-25">
+      <div class="d-flex">
+        <p>CORRECT ANSWERS: </p>
+        <p id="correctAnswersDisplay"></p>
+      </div>
+      <div class="d-flex">
+        <p>WRONG ANSWERS: </p>
+        <p id="wrongAnswersDisplay"></p>
+      </div>
+      <div class="d-flex">
+        <p>CARDS LEFT: </p>
+        <p id="cardsLeftDisplay"></p>
+      </div>
     </div>
     <script src="js/bootstrap.js"></script>
     <script src="js/script.js"></script>
     <script src="js/scriptYourLesson.js"></script>
+    <script src="js/sweetalert2@11.js"></script>
 </body>
 </html>

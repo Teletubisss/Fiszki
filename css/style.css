@@ -3,13 +3,30 @@
     box-sizing: border-box;
     margin: 0;
 }
+html {
+    overflow-x: hidden;
+}
 body {
     font-size: 1vw;
-    width: 99vw;
+    width: 100vw;
     color: #61278b;
     font-family: Garbata;
+    overflow-x: hidden;
 
 }
+.body100 {
+    width: 100%;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.avatar {
+    width: 150px;
+    height: auto;
+}
+
 #backgroundPink {
     position: fixed;
     z-index: -5;
@@ -18,15 +35,18 @@ body {
     width: 50%;
     height: 100%;
     background-color: #ffa8d7; 
+    margin: 0;
 }
 #backgroundPurple {
     position: fixed;
     z-index: -5;
     top: 0;
-    left: 50%;
+    right: 0;
+    left: auto;
     width: 50%;
     height: 100%;
     background-color: #61278b; 
+    margin: 0;
 }
 @font-face {
     font-family: Garbata;
@@ -53,7 +73,7 @@ body {
 }
 .startLesson {
     position: fixed;
-    top: 7%;
+    top: 10%;
     z-index: 2;
 }
 
@@ -108,8 +128,7 @@ h5{
         font-size: 2.5vw;
     }
     .btn {
-        font-size: 3vw;
-        padding: 4px;
+        font-size: 2.5vw;
     }
     .GoBack {
         top: 11%;
@@ -124,13 +143,16 @@ h5{
         background-color: #ffa8d7;
     }
     #backgroundPink {
-        background-color: transparent
+        background-color: transparent;
+        display: none;
     }
     #backgroundPurple {
         background-color: transparent;
+        display: none;
     }
     .purpleBg {
         background-color: #61278b;
+        width: 100vw;
     }
     h6 {
         font-size: 3vw;
@@ -148,10 +170,6 @@ h5{
     border-radius: 25px;
 }
 
-.imageMain {
-    width: 60%;
-    height: auto;
-}
 
 .whiteStripe {
     padding: 5px;
@@ -194,6 +212,10 @@ h5{
     left: 0;
     transform: rotateY(180deg);
     backface-visibility: hidden;
+}
+
+.smallCard {
+    height: 250px;
 }
 
 .hidden {
@@ -245,7 +267,7 @@ h5{
 .cardLesson{
     position: relative;
     min-width: 20vw;
-    height: 350px;
+    height: 300px;
     transition: transform 0.8s;
     cursor: pointer;
     transform-style: preserve-3d;
@@ -290,4 +312,10 @@ h5{
     .shopButton {
         padding: 5px;
     }
+}
+
+
+
+#correctAnswersDisplay, #wrongAnswersDisplay, #cardsLeftDisplay {
+    font-weight: 700;
 }

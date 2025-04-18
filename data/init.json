@@ -1,0 +1,24 @@
+{
+	"projectName": "Demo",
+	"projectDecription": "This is my sample demo project",
+	"flips": [
+		{
+			"titleFront": "Najlepszy rower wg Bebi",
+			"descriptionFront": "V10",
+			"titleBack": "Santa Cruz",
+			"descriptionBack": "V10"
+		},
+    {
+			"titleFront": "Rower Taty",
+			"descriptionFront": "Alu or Cabron?",
+			"titleBack": "Carbon",
+			"descriptionBack": "Cabron"
+		},
+		{
+			"titleFront": "Rower Mamy",
+			"descriptionFront": "Kross or Giant?",
+			"titleBack": "Kross",
+			"descriptionBack": "Soil Boost 1.0"
+		}
+	]
+}

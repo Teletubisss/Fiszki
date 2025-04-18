@@ -1,7 +1,6 @@
+    
 let cardRow = document.querySelector('#cardRow');
 currentTask = undefined;
-
-
 
 let keyDownTitle = (e) => {
     if (e.keyCode === 13) {
@@ -46,33 +45,66 @@ let titleKeyDown = (e, descriptionSelectorId) => {
     }
 }
 
-let descriptionKeyDown = (e, titleSelectorId, decriptionSelectorId) => {
+let keyDown = (e, focusPart) => {
     if (e.keyCode === 13) {
-        saveCard(titleSelectorId, decriptionSelectorId)
+        if (focusPart === 'descriptionInputFront') {
+            flipCard3D('bigCard')
+            document.querySelector('#titleInputBack').focus();
+        }
+        if (focusPart === 'descriptionInputBack') {
+            saveCard('#titleInputFront', '#descriptionInputFront', '#titleInputBack', '#descriptionInputBack')
+            flipCard3D('bigCard');
+            document.querySelector('#titleInputFront').focus();
+        }
+        if (focusPart === 'titleInputFront') {
+            document.querySelector("#descriptionInputFront").focus();
+        }
+        if (focusPart === 'titleInputBack') {
+            document.querySelector("#descriptionInputBack").focus();
+        }
+
+        if (focusPart === 'descriptionInputPopup') {
+            flipCard3D('Popup')
+            document.querySelector('#titleInputPopupBack').focus();
+        }
+        if (focusPart === 'descriptionInputPopupBack') {
+            saveCard('#titleInputPopup', '#descriptionInputPopup', '#titleInputPopupBack', '#descriptionInputPopupBack')
+            flipCard3D('Popup');
+            document.querySelector('#titleInputPopup').focus();
+        }
+        if (focusPart === 'titleInputPopup') {
+            document.querySelector("#descriptionInputPopup").focus();
+        }
+        if (focusPart === 'titleInputPopupBack') {
+            document.querySelector("#descriptionInputPopupBack").focus();
+        }
     }
 }
 
 let saveCard = (titleSelectorIdFront, decriptionSelectorIdFront, titleSelectorIdBack, descriptionSelectorIdBack) => {
-    let bigCardTextFront = document.querySelector(titleSelectorIdFront);
-    let bigCardDescFront = document.querySelector(decriptionSelectorIdFront);
-    let bigCardTextBack = document.querySelector(titleSelectorIdBack);
-    let bigCardDescBack = document.querySelector(descriptionSelectorIdBack);
-    closePopup();
+    if (document.querySelector(titleSelectorIdFront).value !== '' && document.querySelector(titleSelectorIdBack).value !== '') {
+        let bigCardTextFront = document.querySelector(titleSelectorIdFront);
+        let bigCardDescFront = document.querySelector(decriptionSelectorIdFront);
+        let bigCardTextBack = document.querySelector(titleSelectorIdBack);
+        let bigCardDescBack = document.querySelector(descriptionSelectorIdBack);
+        closePopup();
+        document.querySelector('#titleInputFront').focus();
 
-    addCard(bigCardTextFront.value, bigCardDescFront.value, bigCardTextBack.value, bigCardDescBack.value);
-    bigCardDescFront.value = '';
-    bigCardTextFront.value = '';
-    bigCardDescBack.value = '';
-    bigCardTextBack.value = '';
-    bigCardTextFront.focus();
-    saveProject();
-}
+        addCard(bigCardTextFront.value, bigCardDescFront.value, bigCardTextBack.value, bigCardDescBack.value);
+        bigCardDescFront.value = '';
+        bigCardTextFront.value = '';
+        bigCardDescBack.value = '';
+        bigCardTextBack.value = ''; 
+        saveProject();
+    }
+    else {
+            Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Add a Title to both sides of your card!",
+          });
+    }
 
-let fliptCard = (activeClass, noneClass) => {
-    let active = document.querySelector(activeClass);
-    let none = document.querySelector(noneClass);
-    active.classList.add('hidden');
-    none.classList.remove('hidden');
 }
 
 let editCard = (element) => {
@@ -83,9 +115,9 @@ let editCard = (element) => {
     document.querySelector('#titleInputPopupBack').value = element.querySelector('#titleBackSmall').innerText;
     document.querySelector('#descriptionInputPopupBack').value = element.querySelector('#descriptionBackSmall').innerText;
     element.remove();
+    document.querySelector('#titleInputPopup').focus();
     saveProject();
 }
-
 
 let loadCurrentFromStorage = () => {
     const latestName = JSON.parse(localStorage.getItem('currentProjectName'));
@@ -95,7 +127,6 @@ let loadCurrentFromStorage = () => {
     
     loadFromStorage(latestName);
 }
-
 
 let loadFromStorage = (projectName) => {
     const project = JSON.parse(localStorage.getItem(projectName)) || [];
@@ -108,16 +139,15 @@ let loadFromStorage = (projectName) => {
 
 let saveProject = () => {
     const cards = getCards();
+    const lastTitle = document.querySelector('#NewProTitle').value;
     const project = {
         projectName: lastTitle,
         projectDecription: 'tutaj desc',
         flips: cards
     }
     localStorage.setItem(lastTitle, JSON.stringify(project));
+    localStorage.setItem('currentProjectName', JSON.stringify(lastTitle));
 };
-
-
-
 
 let getCards = () => {
     return Array.from(document.querySelectorAll('#smallCards .smallCard')).map(smallCardStorage => ({
@@ -137,9 +167,6 @@ let flipCard3D = (flipCard) => {
     card.classList.toggle('active');
 }
 
-
-
-
 let yourProject = (number, projectName) => {
     return `
             <button type="button" class="btn btn-secondary d-flex justify-content-between m-3" onclick="setCurrent('${projectName}')" >
@@ -153,13 +180,13 @@ let createYourProjects = () => {
     let keys = Object.keys(localStorage);
     let tableCount = 1;
     keys.forEach(key => {
-        if (key !== 'stardrewData' & key !== 'currentProjectName') {
-            console.log(key)
-            let data = JSON.parse(localStorage.getItem(key));
-                let buttonHTML = yourProject(tableCount, key);
-                row.innerHTML += buttonHTML; 
-                tableCount++;
+        var value = JSON.parse(localStorage.getItem(key));
+        if (value.projectName === undefined) {
+            return;
         }
+        let buttonHTML = yourProject(tableCount, key);
+        row.innerHTML += buttonHTML; 
+        tableCount++;
     });
 }
 
@@ -169,5 +196,55 @@ let setCurrent = (projectName) => {
 
 }
 
+let playerXP = JSON.parse(localStorage.getItem("playerXP")) || 0;
+if (localStorage.getItem("currentAvatar") && document.querySelector('.avatar')) {
+    document.querySelector('.avatar').src = JSON.parse(localStorage.getItem("currentAvatar"));
+}
+let currentAvatar = document.querySelector('.avatar').src;
 
+let buyAvatar = (button, avatarSrc) => {
+    localStorage.setItem("currentAvatar", JSON.stringify(currentAvatar));
+    if (button.innerText === "SELECT") {
+        selectAvatar(button, avatarSrc);
+        return;
+    }
 
+    if (playerXP >= 2000) {
+        playerXP -= 2000;
+        localStorage.setItem("playerXP", JSON.stringify(playerXP));
+
+        button.innerText = "SELECT";
+        Swal.fire({
+            title: "Good job!",
+            text: "Your new avatar is now ready!",
+            icon: "success"
+          });
+    } 
+    else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Your don't have enough XP!",
+          });
+    }
+}
+
+function selectAvatar(button, avatarSrc) {
+    currentAvatar = avatarSrc;
+    localStorage.setItem("currentAvatar", JSON.stringify(avatarSrc));
+
+    document.querySelector('.avatar').src = avatarSrc;
+}
+
+function startLessonButton() {
+    if (document.querySelector('#NewProTitle').value !== "") {
+        saveProject();
+        window.location.href = "StartLesson.html";
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Make sure to add a title to your project!",
+        });
+    }
+}
