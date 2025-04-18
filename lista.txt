@@ -1,0 +1,32 @@
+lista_fiszek = [
+    {
+        "titleF": "a",
+        "descF": "b",
+        "titleB": "c",
+        "descB": "d"
+    },
+    {
+        "titleF": "w",
+        "descF": "q",
+        "titleB": "e",
+        "descB": "r"
+    },
+    {
+        "titleF": "1",
+        "descF": "2",
+        "titleB": "3",
+        "descB": "4"
+    },
+    {
+        "titleF": "0",
+        "descF": "9",
+        "titleB": "8",
+        "descB": "7"
+    },
+    {
+        "titleF": "m",
+        "descF": "n",
+        "titleB": "v",
+        "descB": "x"
+    }
+]
